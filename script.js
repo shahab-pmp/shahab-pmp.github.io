@@ -1,59 +1,178 @@
+/* Interactions for the portfolio. State data (assets/states.js) holds the recorded
+   class + inline-style values for every animated component. */
 (function () {
-  var $ = function (s) { return document.querySelector(s); };
-  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
+  var layout = window.__layout || "layout-desktop", phone = layout === "layout-phone";
+  var S = (window.__STATES || {})[layout] || {};
+  // each screen size has its own markup; reload if the window crosses a breakpoint
+  window.addEventListener("resize", function () {
+    var w = window.innerWidth, now = w < 744 ? "layout-phone" : w < 940 ? "layout-tablet" : "layout-desktop";
+    if (now !== layout) window.location.reload();
+  });
 
-  $("#year").textContent = new Date().getFullYear();
-
-  // Accordion + dial
-  var items = $$(".acc-i"), nums = $$(".dial-box .n"), dial = $("#dial");
-  var angles = [225, 315, 405, 495];
-  function pick(i) {
-    items.forEach(function (el, k) {
-      el.classList.toggle("on", k === i);
-      el.querySelector("button").setAttribute("aria-selected", k === i);
-      nums[k].classList.toggle("on", k === i);
+  // Put a component into one of its recorded states.
+  function apply(root, st) {
+    if (!root || !st) return;
+    if (st.cls) root.className = st.cls;
+    Object.keys(st.kids).forEach(function (k) {
+      var p = k.split("#"), el = root.querySelectorAll("." + p[0])[+p[1] || 0];
+      if (!el) return;
+      el.className = st.kids[k][0];
+      el.setAttribute("style", st.kids[k][1]);
     });
-    dial.style.transform = "rotate(" + angles[i] + "deg)";
   }
-  items.forEach(function (el, i) {
-    el.querySelector("button").addEventListener("click", function () { pick(i); });
-  });
-  pick(0);
-
-  // Certification stack
-  var certs = [
-    ["PMI", "Project Management Professional (PMP)®. Formally evaluated for experience, knowledge and performance in defining and overseeing projects and resources.", "Project Management Institute", "Granted 22 Nov 2024 · Valid through 22 Nov 2027"],
-    ["CSM", "Certified ScrumMaster® (CSM). Awarded for completing the prescribed requirements for Scrum Alliance certification.", "Scrum Alliance", "Awarded 6 Sep 2026 · Active through 6 Sep 2028"],
-    ["G", "Google Project Management Professional Certificate.", "Google Career Certificates", "Professional certificate"],
-    ["10P", "Managing Agile Scrum Projects with Jira.", "10 Pearls University", "Course certificate"],
-    ["ML", "Machine Learning Specialization.", "Stanford University and DeepLearning.AI", "Specialization"],
-    ["NLP", "Natural Language Processing Specialization.", "DeepLearning.AI", "Specialization"]
-  ];
-  var ci = 0, stack = $("#stack"), top = stack.querySelector(".s1");
-  function next() {
-    top.classList.add("flip");
-    setTimeout(function () {
-      ci = (ci + 1) % certs.length;
-      var c = certs[ci];
-      $("#cav").textContent = c[0]; $("#cq").textContent = c[1];
-      $("#cn").textContent = c[2]; $("#cm").textContent = c[3];
-      $("#ci").textContent = ci + 1;
-      top.classList.remove("flip");
-    }, 260);
+  function hoverable(root, pair, target) {
+    if (!root || !pair) return;
+    (target || root).addEventListener("mouseenter", function () { apply(root, pair[1]); });
+    (target || root).addEventListener("mouseleave", function () { apply(root, pair[0]); });
   }
-  stack.addEventListener("click", next);
-  stack.addEventListener("keydown", function (e) {
-    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); next(); }
+
+  /* ---------- scroll-linked: nav, compass needle, hero cards, toolkit columns ---------- */
+  var nav = $(".framer-4oaYY"), needle = $(".framer-13prd4q");
+  var cards = [
+    [$(".framer-11d4yik-container"), 2, -254, -170, -23],
+    [$(".framer-1xn3g3i-container"), -11, 111, -425, 24],
+    [$(".framer-1kc9msy-container"), 11, 347, -223, 56],
+  ].map(function (c) { // keep each card's own centring transform, animate what follows it
+    var t = c[0] ? c[0].style.transform : "";
+    return c.concat(t.replace(/\s*rotate\([^)]*\)\s*$/, ""));
+  });
+  var cols = [[$(".framer-87wfsd"), 700], [$(".framer-v3y5vu"), 200], [$(".framer-dehvaw"), 500]];
+  var secWork = $("#work"), secStory = $("#personal"), secWall = $("#inspo"), secCta = $("#cta");
+  var chapters = [$(".framer-2a0oq4"), $(".framer-dvj1fr"), $(".framer-mpy573")], collage = $(".framer-193imed");
+  var ctaBtn = $(".framer-792554-container"), ctaBg = $(".framer-16bsmuj");
+  var navState = -1, chapter = 0;
+  var top = function (el) { return el ? el.getBoundingClientRect().top + window.scrollY : 1e9; };
+
+  function onScroll() {
+    var y = window.scrollY, max = document.documentElement.scrollHeight - window.innerHeight;
+
+    var st = y < 100 ? 0 : y < top(secWork) - 120 ? 1 : y < top(secStory) - 120 ? 2 : y < top(secWall) - 120 ? 3 : y < top(secCta) - 220 ? 4 : 5;
+    if (st !== navState && S.nav) { navState = st; apply(nav, S.nav[st]); }
+    if (needle) needle.style.transform = "rotate(" + (max > 0 ? (y / max) * 360 : 0).toFixed(2) + "deg)";
+
+    if (!phone) {
+      var p = clamp((y - 53) / 780, 0, 1); // hero cards drift apart
+      cards.forEach(function (c) {
+        if (!c[0]) return;
+        c[0].style.transform = c[5] + " translateX(" + (c[2] * p).toFixed(2) + "px) translateY(" + (c[3] * p).toFixed(2) + "px) rotate(" + (c[1] + (c[4] - c[1]) * p).toFixed(3) + "deg)";
+      });
+      if (secWall) { // toolkit columns slide at different speeds across the section
+        var w = clamp((y - (top(secWall) - 220)) / secWall.offsetHeight, 0, 1);
+        cols.forEach(function (c) { if (c[0]) c[0].style.transform = "translateY(" + (-c[1] * w).toFixed(2) + "px)"; });
+      }
+    }
+
+    // closing section: the dark panel rises and the button swings in over the last screen of scroll
+    var q = clamp(1 - (max - y) / window.innerHeight, 0, 1);
+    if (ctaBtn) ctaBtn.style.transform = "translate(-50%, -50%) translateY(" + (317 * (1 - q)).toFixed(2) + "px) rotate(" + (-50 + 62 * q).toFixed(2) + "deg)";
+    if (ctaBg) ctaBg.style.transform = "translateY(" + (-645 * q).toFixed(2) + "px)";
+
+    if (collage && S.collage) {
+      var mid = window.innerHeight / 2, best = 0, dist = 1e9;
+      chapters.forEach(function (c, i) {
+        if (!c) return;
+        var r = c.getBoundingClientRect(), dd = Math.abs((r.top + r.bottom) / 2 - mid);
+        if (dd < dist) { dist = dd; best = i; }
+      });
+      if (best !== chapter) { chapter = best; apply(collage, S.collage[best]); }
+    }
+  }
+  var ticking = false;
+  window.addEventListener("scroll", function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { ticking = false; onScroll(); });
+  }, { passive: true });
+  window.addEventListener("resize", onScroll);
+  onScroll();
+
+  /* ---------- "How I keep releases on track": list + dial ---------- */
+  var acc = $(".framer-i5beM"), dialBase = $(".framer-7b2byk img");
+  (S.dial || []).forEach(function (u) { new Image().src = u; });
+  [".framer-kw1xu6", ".framer-z8u9v4", ".framer-uge5zi", ".framer-3565ka"].forEach(function (sel, i) {
+    var el = $(sel);
+    if (!el) return;
+    el.setAttribute("role", "button");
+    el.setAttribute("tabindex", "0");
+    var go = function () {
+      apply(acc, S.acc && S.acc[i]);
+      if (dialBase && S.dial) dialBase.src = S.dial[i];
+    };
+    el.addEventListener("click", go);
+    el.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
   });
 
-  // Reveal on scroll
+  /* ---------- hover states ---------- */
+  [".framer-vquiZ", ".framer-LXDKt", ".framer-LMtiT"].forEach(function (sel, i) { hoverable($(sel), S.hero && S.hero[i]); });
+  $$(".framer-1suVi").forEach(function (c) { hoverable(c, S.card); });
+  hoverable($(".framer-aLlWN"), S.next);
+  hoverable($(".framer-792554-container"), S.cta, $(".framer-4VW2L"));
+
+  /* ---------- footer tool names: rotate through five per slot ---------- */
+  var slots = $$(".framer-za2WY"), li = 0;
+  if (slots.length && S.logos && S.logos.length) {
+    setInterval(function () {
+      li = (li + 1) % S.logos.length;
+      slots.forEach(function (s, j) { setTimeout(function () { apply(s, S.logos[li]); }, j * 160); });
+    }, 2200);
+  }
+
+  /* ---------- certification card stack: click or drag the top card ---------- */
+  var stackBox = $(".framer-1vz82uo-container > div");
+  if (stackBox) {
+    var order = $$(":scope > div", stackBox), busy = false;
+    var layout = function () {
+      order.forEach(function (el, d) {
+        el.style.transition = "transform .5s cubic-bezier(.2,.8,.2,1), opacity .3s";
+        el.style.zIndex = order.length - d;
+        el.style.opacity = 1;
+        el.style.cursor = d ? "default" : "grab";
+        el.style.transform = "translateX(" + 7.5 * d + "px) translateY(" + -8 * d + "px) translateZ(" + -10 * d + "px) scale(" + (1 - 0.05 * d) + ") rotate(" + (-3.5 + 1.875 * d) + "deg)";
+      });
+    };
+    var next = function (dir) {
+      if (busy) return;
+      busy = true;
+      var t = order[0];
+      t.style.transition = "transform .35s ease-in, opacity .35s";
+      t.style.transform = "translateX(" + (dir || 1) * 70 + "%) translateY(-6%) rotate(" + (dir || 1) * 14 + "deg)";
+      t.style.opacity = 0;
+      setTimeout(function () { order.push(order.shift()); layout(); busy = false; }, 340);
+    };
+    var x0 = null, moved = 0;
+    stackBox.addEventListener("pointerdown", function (e) { x0 = e.clientX; moved = 0; });
+    window.addEventListener("pointermove", function (e) {
+      if (x0 === null || busy) return;
+      moved = e.clientX - x0;
+      order[0].style.transition = "none";
+      order[0].style.transform = "translateX(" + moved + "px) rotate(" + (-3.5 + moved / 25) + "deg)";
+    });
+    window.addEventListener("pointerup", function () {
+      if (x0 === null) return;
+      x0 = null;
+      if (Math.abs(moved) > 60 || Math.abs(moved) < 5) next(moved < 0 ? -1 : 1); else layout();
+    });
+    stackBox.setAttribute("tabindex", "0");
+    stackBox.setAttribute("aria-label", "Certifications. Press Enter for the next one.");
+    stackBox.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); next(1); } });
+    stackBox.style.touchAction = "pan-y";
+  }
+
+  /* ---------- fade-up on first view ---------- */
+  var hidden = $$('[style*="translateY(56px)"]');
   if ("IntersectionObserver" in window) {
-    document.documentElement.classList.add("js");
     var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    $$(".stats > div, .co, .tk, .chapters article, .needle, .stack").forEach(function (el) {
-      el.classList.add("rv"); io.observe(el);
-    });
-  }
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.style.transition = "opacity .7s, transform .7s cubic-bezier(.2,.8,.2,1)";
+        e.target.style.opacity = 1;
+        e.target.style.transform = "none";
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.15 });
+    hidden.forEach(function (el) { io.observe(el); });
+  } else hidden.forEach(function (el) { el.style.opacity = 1; el.style.transform = "none"; });
 })();

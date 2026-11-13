@@ -1,10 +1,13 @@
 # Muhammad Shahab — Portfolio
 
-Personal portfolio for a PMP & CSM certified Project Manager / Scrum Master.
-Static site (HTML, CSS, a little JS), no build step. Hosted with GitHub Pages.
+Portfolio of Muhammad Shahab, PMP and CSM certified Project Manager and Scrum Master.
 
 Live: https://shahab-pmp.github.io/
 
+Static site: `index.html`, `styles.css`, `custom.css`, `script.js` and the `assets/` folder. No build step is needed to host it.
+
 ## Run locally
 
-Open `index.html` in a browser, or run `python -m http.server` and visit http://localhost:8000.
+    python -m http.server 8000
+
+Then open http://localhost:8000.

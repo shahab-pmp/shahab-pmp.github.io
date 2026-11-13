@@ -1,0 +1,50 @@
+/* Additions on top of the reference stylesheet: transitions for the scripted states
+   and a few layout fixes for content that differs in length. */
+html { scroll-behavior: smooth; }
+.ssr-variant { display: contents; }
+
+/* nav */
+.framer-pnhjfx { transition: background-color .3s, backdrop-filter .3s, border-color .3s; }
+.framer-4oaYY .framer-1twt1xe, .framer-4oaYY .framer-5hzaed, .framer-hxlin { transition: opacity .3s, background-color .3s; }
+.framer-4oaYY .framer-1twt1xe p { transition: color .3s; }
+
+/* hero cards */
+.framer-LXDKt [class*="framer-"], .framer-LMtiT [class*="framer-"], .framer-vquiZ [class*="framer-"] { transition: transform .45s cubic-bezier(.2, .8, .2, 1); }
+
+/* list + dial */
+.framer-i5beM [class*="framer-"] { transition: opacity .35s ease, transform .8s cubic-bezier(.3, 1.25, .4, 1); }
+.framer-kw1xu6, .framer-z8u9v4, .framer-uge5zi, .framer-3565ka { cursor: pointer; position: relative; z-index: 3; }
+
+/* project cards: lift, tilt and a light sweep across the badge */
+.framer-1suVi, .framer-aLlWN { transition: background-color .3s, box-shadow .3s; }
+.framer-1suVi.hover, .framer-aLlWN.hover { background-color: rgba(17, 17, 17, .04) !important; box-shadow: rgba(0, 0, 0, .1) 0 0 0 1px, rgba(0, 0, 0, 0) 0 4px 4px 0 !important; }
+.framer-n00jkk .framer-vvfh8e, .framer-n00jkk .framer-4n1664, .framer-n00jkk .framer-1hjcoet, .framer-n00jkk .framer-1byqvc1 { transition: transform .5s cubic-bezier(.2, .8, .2, 1), filter .5s; }
+.hover .framer-4n1664, .hover .framer-1byqvc1 { transform: rotate(-8deg) rotateX(6deg) rotateY(-6deg) !important; }
+.framer-1ynfo92, .framer-ro18wj, .framer-czv4v3 {
+  background: linear-gradient(132deg, rgba(255, 255, 255, 0) 42%, rgba(255, 255, 255, .85) 47%, rgba(255, 255, 255, .85) 53%, rgba(255, 255, 255, 0) 58%) no-repeat !important;
+  background-size: 320% 100% !important; background-position: 96% 0 !important; transition: background-position .8s ease;
+}
+.hover .framer-1ynfo92, .hover .framer-ro18wj, .hover .framer-czv4v3 { background-position: 4% 0 !important; }
+
+/* story collage */
+.framer-193imed [class*="framer-"] { transition: opacity .45s ease, transform .8s cubic-bezier(.2, .8, .2, 1); }
+
+/* contact button + rotating tool names */
+.framer-792554-container [class*="framer-"] { transition: transform .5s cubic-bezier(.2, .8, .2, 1); }
+.framer-za2WY [class*="framer-"] { transition: opacity .5s ease, transform .5s ease; }
+
+/* content that is longer than the reference's */
+@media (min-width: 940px) {
+  .framer-1q42hqp h1 { --framer-font-size: 112px !important; white-space: nowrap; }
+  .framer-1b8ro3z h2 { white-space: nowrap; }
+  .row-last > .ssr-variant > * { flex: 0 0 calc(50% - 10px) !important; width: calc(50% - 10px) !important; margin: 0 auto; }
+}
+
+@media (max-width: 743px) {
+  .framer-1q42hqp h1 { --framer-font-size: 68px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}
