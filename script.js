@@ -46,12 +46,37 @@
   var navState = -1, chapter = 0;
   var top = function (el) { return el ? el.getBoundingClientRect().top + window.scrollY : 1e9; };
 
+  // compass needle: follows the scroll position, and swings a further 24deg on a spring while the logo is hovered
+  var scrollDeg = 0, swing = 0, swingV = 0, swingTo = 0, swinging = false, swingT = 0;
+  function turnNeedle() { if (needle) needle.style.transform = "rotate(" + (scrollDeg + swing).toFixed(2) + "deg)"; }
+  function swingStep(t) {
+    var dt = Math.min((t - swingT) / 1000, 0.032), n = Math.ceil(dt / 0.004), h = dt / n;
+    swingT = t;
+    for (var i = 0; i < n; i++) { swingV += (-2380 * (swing - swingTo) - 29 * swingV) * h; swing += swingV * h; }
+    if (Math.abs(swing - swingTo) < 0.05 && Math.abs(swingV) < 0.5) { swing = swingTo; swingV = 0; swinging = false; }
+    turnNeedle();
+    if (swinging) requestAnimationFrame(swingStep);
+  }
+  function swingNeedle(to) {
+    swingTo = to;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) { swing = to; turnNeedle(); return; }
+    if (swinging) return;
+    swinging = true; swingT = performance.now();
+    requestAnimationFrame(swingStep);
+  }
+  var logo = $(".framer-EL9sb");
+  if (logo) {
+    logo.addEventListener("mouseenter", function () { swingNeedle(24); });
+    logo.addEventListener("mouseleave", function () { swingNeedle(0); });
+  }
+
   function onScroll() {
     var y = window.scrollY, max = document.documentElement.scrollHeight - window.innerHeight;
 
     var st = y < 100 ? 0 : y < top(secWork) - 120 ? 1 : y < top(secStory) - 120 ? 2 : y < top(secWall) - 120 ? 3 : y < top(secCta) - 220 ? 4 : 5;
     if (st !== navState && S.nav) { navState = st; apply(nav, S.nav[st]); }
-    if (needle) needle.style.transform = "rotate(" + (max > 0 ? (y / max) * 360 : 0).toFixed(2) + "deg)";
+    scrollDeg = max > 0 ? (y / max) * 360 : 0;
+    turnNeedle();
 
     if (!phone) {
       var p = clamp((y - 53) / 780, 0, 1); // hero cards drift apart
