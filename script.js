@@ -39,8 +39,7 @@
     var t = c[0] ? c[0].style.transform : "";
     return c.concat(t.replace(/\s*rotate\([^)]*\)\s*$/, ""));
   });
-  var cols = [[$(".framer-87wfsd"), 460], [$(".framer-v3y5vu"), 130], [$(".framer-dehvaw"), 330]]; // reference: 700/200/500 for six tiles per column; scaled to four
-  var secWork = $("#work"), secStory = $("#personal"), secWall = $("#inspo"), secCta = $("#cta");
+  var secWork = $("#work"), secStory = $("#personal"), secSkills = $("#skills"), secCta = $("#cta");
   var chapters = [$(".framer-2a0oq4"), $(".framer-dvj1fr"), $(".framer-mpy573")], collage = $(".framer-193imed");
   var ctaBtn = $(".framer-792554-container"), ctaBg = $(".framer-16bsmuj");
   var navState = -1, chapter = 0;
@@ -73,7 +72,9 @@
   function onScroll() {
     var y = window.scrollY, max = document.documentElement.scrollHeight - window.innerHeight;
 
-    var st = y < 100 ? 0 : y < top(secWork) - 120 ? 1 : y < top(secStory) - 120 ? 2 : y < top(secWall) - 120 ? 3 : y < top(secCta) - 220 ? 4 : 5;
+    // nav: 0 top, 1 hero, 2 work, 3 story, 4 skills (inside the work section), 5 closing
+    var inSkills = secSkills && y >= top(secSkills) - 160 && y < top(secSkills) + secSkills.offsetHeight - 160;
+    var st = y < 100 ? 0 : y < top(secWork) - 120 ? 1 : y < top(secStory) - 120 ? (inSkills ? 4 : 2) : y < top(secCta) - 220 ? 3 : 5;
     if (st !== navState && S.nav) { navState = st; apply(nav, S.nav[st]); }
     scrollDeg = max > 0 ? (y / max) * 360 : 0;
     turnNeedle();
@@ -84,10 +85,6 @@
         if (!c[0]) return;
         c[0].style.transform = c[5] + " translateX(" + (c[2] * p).toFixed(2) + "px) translateY(" + (c[3] * p).toFixed(2) + "px) rotate(" + (c[1] + (c[4] - c[1]) * p).toFixed(3) + "deg)";
       });
-      if (secWall) { // toolkit columns slide at different speeds across the section
-        var w = clamp((y - (top(secWall) - 220)) / secWall.offsetHeight, 0, 1);
-        cols.forEach(function (c) { if (c[0]) c[0].style.transform = "translateY(" + (-c[1] * w).toFixed(2) + "px)"; });
-      }
     }
 
     // closing section: the dark panel rises and the button swings in over the last screen of scroll
