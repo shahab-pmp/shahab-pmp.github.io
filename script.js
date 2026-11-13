@@ -39,7 +39,7 @@
     var t = c[0] ? c[0].style.transform : "";
     return c.concat(t.replace(/\s*rotate\([^)]*\)\s*$/, ""));
   });
-  var cols = [[$(".framer-87wfsd"), 700], [$(".framer-v3y5vu"), 200], [$(".framer-dehvaw"), 500]];
+  var cols = [[$(".framer-87wfsd"), 460], [$(".framer-v3y5vu"), 130], [$(".framer-dehvaw"), 330]]; // reference: 700/200/500 for six tiles per column; scaled to four
   var secWork = $("#work"), secStory = $("#personal"), secWall = $("#inspo"), secCta = $("#cta");
   var chapters = [$(".framer-2a0oq4"), $(".framer-dvj1fr"), $(".framer-mpy573")], collage = $(".framer-193imed");
   var ctaBtn = $(".framer-792554-container"), ctaBg = $(".framer-16bsmuj");
@@ -173,7 +173,8 @@
       setTimeout(function () { order.push(order.shift()); layout(); busy = false; }, 340);
     };
     var x0 = null, moved = 0;
-    stackBox.addEventListener("pointerdown", function (e) { x0 = e.clientX; moved = 0; });
+    layout(); // the stack can hold more cards than the reference's five, so place them all up front
+    stackBox.addEventListener("pointerdown", function (e) { if (e.target.closest("a")) return; x0 = e.clientX; moved = 0; });
     window.addEventListener("pointermove", function (e) {
       if (x0 === null || busy) return;
       moved = e.clientX - x0;
