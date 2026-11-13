@@ -11,14 +11,22 @@ html { scroll-behavior: smooth; }
 /* hero cards */
 .framer-LXDKt [class*="framer-"], .framer-LMtiT [class*="framer-"], .framer-vquiZ [class*="framer-"] { transition: transform .45s cubic-bezier(.2, .8, .2, 1); }
 
-/* hero "Certified" card: the PMP and CSM certificates shown whole, one above the other */
-.framer-LMtiT .framer-1soyb7r, .framer-LMtiT .framer-1ct5bbn { width: 58% !important; height: auto !important; border-radius: 3px !important; overflow: hidden !important; background: #fff !important; filter: none !important; box-shadow: rgba(0, 0, 0, .35) 0 8px 14px 0 !important; }
-.framer-LMtiT .framer-1soyb7r { aspect-ratio: 1550 / 1195 !important; top: 5% !important; left: 5% !important; right: auto !important; bottom: auto !important; transform: rotate(-5deg) !important; }
-.framer-LMtiT .framer-1ct5bbn { aspect-ratio: 1650 / 1163 !important; top: auto !important; left: auto !important; right: 5% !important; bottom: 5% !important; transform: rotate(4deg) !important; }
-.framer-LMtiT.hover .framer-1soyb7r { transform: rotate(-9deg) translate(-4px, -3px) !important; }
-.framer-LMtiT.hover .framer-1ct5bbn { transform: rotate(8deg) translate(4px, 3px) !important; }
-.framer-LMtiT .framer-11d5ob9 { top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; height: 100% !important; aspect-ratio: auto !important; border-radius: 0 !important; --border-top-width: 0px !important; --border-bottom-width: 0px !important; --border-left-width: 0px !important; --border-right-width: 0px !important; }
+/* hero "Certified" card: the PMP and CSM certificates as white-framed tiles (like the middle card's)
+   with two glossy badges (like the first card's pills) */
+.framer-LMtiT .framer-1soyb7r, .framer-LMtiT .framer-1ct5bbn { box-sizing: border-box !important; width: 60% !important; height: auto !important; border: 4px solid #fff !important; border-radius: 10px !important; overflow: hidden !important; background: #fff !important; filter: none !important; box-shadow: rgba(0, 0, 0, .45) 0 10px 18px 0 !important; }
+.framer-LMtiT .framer-1soyb7r { aspect-ratio: 1550 / 1195 !important; top: 6% !important; left: 6% !important; right: auto !important; bottom: auto !important; transform: rotate(-7deg) !important; }
+.framer-LMtiT .framer-1ct5bbn { aspect-ratio: 1650 / 1163 !important; top: auto !important; left: auto !important; right: 6% !important; bottom: 6% !important; transform: rotate(6deg) !important; }
+.framer-LMtiT.hover .framer-1soyb7r { transform: rotate(-11deg) translate(-5px, -4px) !important; }
+.framer-LMtiT.hover .framer-1ct5bbn { transform: rotate(10deg) translate(5px, 4px) !important; }
+.framer-LMtiT .framer-11d5ob9 { top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; height: 100% !important; aspect-ratio: auto !important; border-radius: 5px !important; --border-top-width: 0px !important; --border-bottom-width: 0px !important; --border-left-width: 0px !important; --border-right-width: 0px !important; }
+.framer-LMtiT .framer-1ct5bbn img { border-radius: 5px !important; }
 .framer-LMtiT .framer-13utv58 { display: none !important; }
+.cert-badge { position: absolute; z-index: 2; padding: 7px 16px 9px; border-radius: 15px; font-family: "Inter Display", "Inter Display Placeholder", sans-serif; font-size: 24px; font-weight: 700; letter-spacing: -.02em; line-height: 1; pointer-events: none; user-select: none; transition: transform .45s cubic-bezier(.2, .8, .2, 1); }
+.cert-badge-pmp { right: 7%; top: 13%; color: #e6d9ff; text-shadow: 0 -1px 0 rgba(40, 8, 110, .55); background: linear-gradient(180deg, #a57bff 0%, #6a35e0 100%); box-shadow: inset 0 2px 1px rgba(255, 255, 255, .55), inset 0 -2px 2px rgba(40, 8, 110, .35), 0 6px 0 #43169c, 0 16px 18px rgba(0, 0, 0, .45); transform: rotate(9deg); }
+.cert-badge-csm { left: 8%; bottom: 14%; color: #7a3c00; text-shadow: 0 1px 0 rgba(255, 240, 200, .6); background: linear-gradient(180deg, #ffd66b 0%, #f59b0b 100%); box-shadow: inset 0 2px 1px rgba(255, 255, 255, .7), inset 0 -2px 2px rgba(150, 70, 0, .3), 0 6px 0 #b86a00, 0 16px 18px rgba(0, 0, 0, .45); transform: rotate(-10deg); }
+.framer-LMtiT.hover .cert-badge-pmp { transform: rotate(15deg) translate(4px, -6px) scale(1.06); }
+.framer-LMtiT.hover .cert-badge-csm { transform: rotate(-16deg) translate(-4px, 6px) scale(1.06); }
+@media (max-width: 743px) { .cert-badge { font-size: 20px; padding: 6px 13px 8px; border-radius: 13px; } }
 
 /* list + dial */
 .framer-i5beM [class*="framer-"] { transition: opacity .35s ease, transform .8s cubic-bezier(.3, 1.25, .4, 1); }
