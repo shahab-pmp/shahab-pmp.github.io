@@ -3,7 +3,7 @@
 Personal portfolio for a PMP & CSM certified Project Manager / Scrum Master.
 Static site (HTML, CSS, a little JS), no build step. Hosted with GitHub Pages.
 
-Live: https://ask4-shahab.github.io/
+Live: https://shahab-pmp.github.io/
 
 ## Run locally
 
