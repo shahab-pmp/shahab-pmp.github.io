@@ -108,11 +108,17 @@ a.cg-pic:hover { transform: translateY(-4px) rotate(-.6deg); box-shadow: rgba(0,
 /* toolkit wall: picture tiles with the skill group underneath */
 .tk-tile { aspect-ratio: auto !important; height: auto !important; background: #fff; pointer-events: auto !important; }
 .tk { position: relative; display: flex; flex-direction: column; border-radius: inherit; overflow: hidden; background: #fff; font-family: "Inter Display", "Inter Display Placeholder", sans-serif; text-align: left; }
-.tk-pic { width: 100%; padding: 14px 14px 0; box-sizing: border-box; }
-.tk-pic img { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .5s cubic-bezier(.2, .8, .2, 1); }
-.tk-pic.tk-bleed { padding: 0; }
-.tk-bleed img { object-fit: cover; }
-.tk-txt:first-child { padding-top: 20px; }
+.tk-pic { position: relative; width: 100%; flex: 1 1 auto; min-height: 0; }
+.tk-pic img { position: absolute; top: 14px; left: 14px; width: calc(100% - 28px); height: calc(100% - 14px); object-fit: contain; transition: transform .5s cubic-bezier(.2, .8, .2, 1); }
+.tk-bleed img { top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+.tk-txt { flex: none; }
+/* side by side, the three columns end level: tiles in the shorter columns grow to fill */
+@media (min-width: 744px) {
+  #skills .framer-11wzbkc { align-items: stretch !important; }
+  #skills .framer-87wfsd, #skills .framer-v3y5vu, #skills .framer-dehvaw { height: auto !important; }
+  #skills .tk-tile { flex: 1 1 auto !important; display: flex !important; flex-direction: column; }
+  #skills .tk { flex: 1 1 auto; }
+}
 .tk-tile:hover .tk-pic img { transform: scale(1.05) rotate(-1.5deg); }
 .tk-txt { padding: 12px 18px 20px; display: flex; flex-direction: column; gap: 6px; }
 .tk-txt h4 { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -.02em; line-height: 24px; color: #000; }
