@@ -79,7 +79,19 @@ a:hover > .rs-arrow { transform: translate(2px, -2px); }
 .pj-detail { align-self: stretch; display: flex; flex-direction: column; gap: 12px; padding: 16px 16px 20px; border-top: 1px solid rgba(0, 0, 0, .1); font-family: "Inter Display", "Inter Display Placeholder", sans-serif; text-align: left; white-space: normal; }
 .pj-detail .rs-role { font-weight: 600; color: #000; }
 .pj-detail .rs-points { font-size: 15px; gap: 6px; }
-.cert-verify { color: inherit; font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(0, 0, 0, .3); cursor: pointer; }
+/* certifications: a gallery of the certificates themselves */
+.cg { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 20px; font-family: "Inter Display", "Inter Display Placeholder", sans-serif; text-align: left; }
+.cg-item { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.cg-pic { display: block; aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; background: rgba(17, 17, 17, .03); box-shadow: rgba(0, 0, 0, .1) 0 0 0 1px, rgba(0, 0, 0, .06) 0 4px 4px 0; transition: transform .45s cubic-bezier(.2, .8, .2, 1), box-shadow .3s; }
+.cg-pic img { display: block; width: 100%; height: 100%; object-fit: contain; }
+a.cg-pic { background: #fff; cursor: zoom-in; }
+a.cg-pic:hover { transform: translateY(-4px) rotate(-.6deg); box-shadow: rgba(0, 0, 0, .12) 0 0 0 1px, rgba(0, 0, 0, .14) 0 14px 24px 0; }
+.cg-empty { display: flex; align-items: center; justify-content: center; }
+.cg-empty img { width: 88px; height: 88px; border-radius: 50%; box-shadow: rgba(0, 0, 0, .18) 0 8px 16px 0; }
+.cg-info { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.cg-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.cg-info .rs-link { flex: none; }
+@media (max-width: 743px) { .cg { grid-template-columns: minmax(0, 1fr); gap: 32px; } }
 @media (max-width: 939px) {
   .rs-h { font-size: 48px; }
   .rs-item { grid-template-columns: 220px minmax(0, 1fr); gap: 12px 28px; }
