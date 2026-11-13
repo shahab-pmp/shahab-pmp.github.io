@@ -11,6 +11,15 @@ html { scroll-behavior: smooth; }
 /* hero cards */
 .framer-LXDKt [class*="framer-"], .framer-LMtiT [class*="framer-"], .framer-vquiZ [class*="framer-"] { transition: transform .45s cubic-bezier(.2, .8, .2, 1); }
 
+/* hero "Certified" card: the PMP and CSM certificates shown whole, one above the other */
+.framer-LMtiT .framer-1soyb7r, .framer-LMtiT .framer-1ct5bbn { width: 58% !important; height: auto !important; border-radius: 3px !important; overflow: hidden !important; background: #fff !important; filter: none !important; box-shadow: rgba(0, 0, 0, .35) 0 8px 14px 0 !important; }
+.framer-LMtiT .framer-1soyb7r { aspect-ratio: 1550 / 1195 !important; top: 5% !important; left: 5% !important; right: auto !important; bottom: auto !important; transform: rotate(-5deg) !important; }
+.framer-LMtiT .framer-1ct5bbn { aspect-ratio: 1650 / 1163 !important; top: auto !important; left: auto !important; right: 5% !important; bottom: 5% !important; transform: rotate(4deg) !important; }
+.framer-LMtiT.hover .framer-1soyb7r { transform: rotate(-9deg) translate(-4px, -3px) !important; }
+.framer-LMtiT.hover .framer-1ct5bbn { transform: rotate(8deg) translate(4px, 3px) !important; }
+.framer-LMtiT .framer-11d5ob9 { top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; height: 100% !important; aspect-ratio: auto !important; border-radius: 0 !important; --border-top-width: 0px !important; --border-bottom-width: 0px !important; --border-left-width: 0px !important; --border-right-width: 0px !important; }
+.framer-LMtiT .framer-13utv58 { display: none !important; }
+
 /* list + dial */
 .framer-i5beM [class*="framer-"] { transition: opacity .35s ease, transform .8s cubic-bezier(.3, 1.25, .4, 1); }
 .framer-kw1xu6, .framer-z8u9v4, .framer-uge5zi, .framer-3565ka { cursor: pointer; position: relative; z-index: 3; }
