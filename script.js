@@ -133,6 +133,11 @@
   /* ---------- hover states ---------- */
   [".framer-vquiZ", ".framer-LXDKt", ".framer-LMtiT"].forEach(function (sel, i) { hoverable($(sel), S.hero && S.hero[i]); });
   $$(".framer-1suVi").forEach(function (c) { hoverable(c, S.card); });
+  $$(".framer-1suVi[data-href]").forEach(function (c) { // project cards with a link open the project
+    var open = function () { window.open(c.getAttribute("data-href"), "_blank", "noopener"); };
+    c.addEventListener("click", open);
+    c.addEventListener("keydown", function (e) { if (e.key === "Enter") open(); });
+  });
   hoverable($(".framer-aLlWN"), S.next);
   hoverable($(".framer-792554-container"), S.cta, $(".framer-4VW2L"));
 
@@ -197,7 +202,7 @@
         e.target.style.transform = "none";
         io.unobserve(e.target);
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.04 }); // low, so tall blocks (the experience list on a phone) still trigger
     hidden.forEach(function (el) { io.observe(el); });
   } else hidden.forEach(function (el) { el.style.opacity = 1; el.style.transform = "none"; });
 })();

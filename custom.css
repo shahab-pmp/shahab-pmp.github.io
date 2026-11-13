@@ -33,6 +33,40 @@ html { scroll-behavior: smooth; }
 .framer-792554-container [class*="framer-"] { transition: transform .5s cubic-bezier(.2, .8, .2, 1); }
 .framer-za2WY [class*="framer-"] { transition: opacity .5s ease, transform .5s ease; }
 
+/* resume sections (summary, experience, key projects, skills, certifications, education) */
+.rs { width: 100%; display: flex; flex-direction: column; gap: 40px; font-family: "Inter Display", "Inter Display Placeholder", sans-serif; color: #000; text-align: left; }
+.rs-h { margin: 0; font-family: "Instrument Sans Variable", "Instrument Sans Variable Placeholder", sans-serif; font-variation-settings: "wdth" 85, "wght" 700; font-weight: 700; font-size: 56px; letter-spacing: -.03em; line-height: .9; }
+.rs-lead { margin: 0; font-size: 20px; line-height: 1.5; letter-spacing: -.01em; color: rgba(0, 0, 0, .6); }
+.rs-list { display: flex; flex-direction: column; border-top: 1px solid rgba(0, 0, 0, .1); }
+.rs-item { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 12px 40px; padding: 28px 0; border-bottom: 1px solid rgba(0, 0, 0, .1); align-items: start; }
+.rs-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; align-items: center; padding: 20px 0; }
+.rs-side { display: flex; flex-direction: column; gap: 6px; }
+.rs-t { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -.02em; line-height: 24px; }
+.rs-t a, .rs-text a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(0, 0, 0, .25); transition: border-color .2s; }
+.rs-t a:hover, .rs-text a:hover { border-color: #000; }
+.rs-role { margin: 0; font-size: 16px; line-height: 1.4; color: rgba(0, 0, 0, .8); }
+.rs-meta { margin: 0; font-size: 15px; line-height: 1.4; color: rgba(0, 0, 0, .5); }
+.rs-text { margin: 0; font-size: 17px; line-height: 1.5; color: rgba(0, 0, 0, .6); }
+.rs-points { margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 10px; font-size: 17px; line-height: 1.5; color: rgba(0, 0, 0, .6); }
+.rs-points li::marker { color: rgba(0, 0, 0, .3); }
+.rs-link { justify-self: end; white-space: nowrap; font-size: 15px; font-weight: 600; color: #000; text-decoration: none; padding: 8px 14px; border-radius: 8px; box-shadow: rgba(0, 0, 0, .08) 0 0 0 1px, rgba(0, 0, 0, .12) 0 2px 4px 0; transition: background-color .2s; }
+.rs-link:hover { background-color: rgba(17, 17, 17, .05); }
+.rs-arrow { display: inline-block; font-size: .85em; transition: transform .2s; }
+a:hover > .rs-arrow { transform: translate(2px, -2px); }
+.framer-1suVi[data-href] { cursor: pointer; }
+@media (max-width: 939px) {
+  .rs-h { font-size: 48px; }
+  .rs-item { grid-template-columns: 220px minmax(0, 1fr); gap: 12px 28px; }
+}
+@media (max-width: 743px) {
+  .rs { gap: 28px; }
+  .rs-h { font-size: 40px; }
+  .rs-lead { font-size: 18px; }
+  .rs-item, .rs-row { grid-template-columns: minmax(0, 1fr); padding: 22px 0; }
+  .rs-link { justify-self: start; }
+  .rs-points, .rs-text { font-size: 16px; }
+}
+
 /* content that is longer than the reference's */
 @media (min-width: 940px) {
   .framer-1q42hqp h1 { --framer-font-size: 112px !important; white-space: nowrap; }
