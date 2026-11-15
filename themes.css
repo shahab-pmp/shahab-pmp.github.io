@@ -1,0 +1,109 @@
+/* Full light and dark appearances, selected through the persistent header toggle. */
+:root[data-theme="light"] {
+ color-scheme:light;
+ --page-bg:#FFFFFF; --section-bg:#F2F7F5;
+ --page-text:#1B2924; --page-muted:#586A62;
+ --reference-text:var(--page-text); --reference-muted:var(--page-muted);
+ --reference-panel:var(--section-bg); --reference-rule:#DEE8E3;
+ --neutral-3:var(--section-bg); --neutral-10:#DEE8E3; --neutral-65:var(--page-muted);
+ --ms-text-muted:var(--page-muted); --ms-rule:#DEE8E3;
+ --action-ink:var(--navigator-mint); --action-wash:#E3F7EF; --focus-ring:#087C70;
+ --reference-header-float:rgba(255,255,255,.96); --reference-header-shadow:rgba(0,0,0,.04);
+}
+:root[data-theme="light"] .ms-header { border-bottom-color:#DEE8E3; }
+:root[data-theme="light"] :where(a,button,summary,input,textarea,select,[tabindex]):focus-visible { outline-color:var(--focus-ring); }
+:root[data-theme="light"] :is(.ms-experience-card,.ms-foundation,.ms-credential,.ms-project-card,.ms-service-card,.ms-personal-note,.ms-note-card,.ms-skill,.ms-desktop-nav,.ms-resources,.ms-mobile-menu nav,.ms-search-dialog,.ms-footer-panel) :is(a,button,summary,input,[tabindex]):focus-visible { outline-color:var(--navigator-mint); }
+.ms-theme-toggle { width:44px; height:44px; min-height:44px; border:1px solid #3A3B3F; background:#0A0A0B; color:#F4F4F5; }
+.ms-theme-toggle:hover { background:#26272A; color:var(--navigator-mint); }
+.ms-theme-toggle:focus-visible { outline:2px solid var(--focus-ring); outline-offset:4px; }
+.ms-theme-toggle svg { width:20px; height:20px; transition:transform .2s ease-out; }
+.ms-theme-toggle:hover svg { transform:rotate(-12deg); }
+.ms-theme-toggle .ms-theme-moon { display:none; }
+[data-theme="light"] .ms-theme-toggle .ms-theme-sun { display:none; }
+[data-theme="light"] .ms-theme-toggle .ms-theme-moon { display:block; }
+body,.ms-page-shell,main>section,.ms-header { transition:background-color .2s ease,color .2s ease,border-color .2s ease; }
+.ms-brand,.ms-brand-period,.ms-hero h1,main>section h2,.ms-greeting,.ms-hero-description,.ms-hero-meta,.ms-tools-title>p { transition:color .2s ease; }
+@media(max-width:767px) { .ms-header-actions>.ms-resume { display:none; } }
+@media(max-width:359px) {
+ .ms-brand { font-size:14px; gap:6px; }
+ .ms-header .ms-navigator { width:28px; height:28px; }
+ .ms-nav-wrap { gap:10px; }
+ .ms-header-actions { gap:6px; }
+}
+@media(prefers-reduced-motion:reduce) {
+ body,.ms-page-shell,main>section,.ms-header,.ms-brand,.ms-brand-period,.ms-hero h1,main>section h2,.ms-greeting,.ms-hero-description,.ms-hero-meta,.ms-tools-title>p,.ms-theme-toggle svg { transition:none; }
+}
+
+
+.ms-brand { transition:color .2s ease,transform .2s ease; }
+@media(prefers-reduced-motion:reduce) { .ms-brand { transition:none; } }
+
+/* Complete light appearance: white surfaces, dark content, and accessible teal actions. */
+:root[data-theme="light"] {
+ --page-bg:#F7FAF8; --section-bg:#EDF3EF;
+ --surface-dark:#FFFFFF; --surface-dark-line:#D5E1DA;
+ --on-surface:#1B2924; --on-surface-muted:#586A62;
+ --ms-panel:#FFFFFF;
+}
+:root[data-theme="light"] :is(.ms-experience-card,.ms-card-face,.ms-foundation,.ms-credential,.ms-learning li,.ms-project-card,.ms-service-card,.ms-personal-note,.ms-personal-photo,.ms-note-card,.ms-skill,.ms-desktop-nav,.ms-resources>div,.ms-mobile-menu nav,.ms-search-dialog,.ms-tool-badge) {
+ --action-ink:var(--navigator-mint); --action-wash:#E3F7EF;
+}
+:root[data-theme="light"] :is(.ms-experience-card,.ms-foundation,.ms-credential,.ms-project-card,.ms-service-card,.ms-personal-note,.ms-personal-photo,.ms-note-card,.ms-footer-panel) { box-shadow:0 8px 26px #0A0A0B09; }
+:root[data-theme="light"] :is(.ms-credential,.ms-project-card,.ms-service-card):hover,
+:root[data-theme="light"] :is(.ms-credential,.ms-project-card,.ms-service-card):focus-within { border-color:#A4C4B3; }
+:root[data-theme="light"] .ms-experience-card .ms-company-logo { filter:none; }
+:root[data-theme="light"] :is(.ms-card-footer .ms-flip-button,.ms-company-back .ms-text-button,.ms-credential-link,.ms-project-link,.ms-service-bottom,.ms-learning li>svg) { color:var(--navigator-mint); }
+:root[data-theme="light"] :is(.ms-foundation-dates,.ms-tag,.ms-credential-badge,.ms-profile-facts span) { background:#E8F6EE; border-color:#CDDFD4; color:#195D44; }
+:root[data-theme="light"] .ms-foundation-mark { background:#E8F6EE; border-color:#BCD7C8; box-shadow:0 8px 18px #0A0A0B0A; }
+:root[data-theme="light"] .ms-foundation-mark>span { color:#195D44; }
+:root[data-theme="light"] .ms-foundation-mark svg { background:#FFFFFF; border-color:#BCD7C8; color:#195D44; }
+:root[data-theme="light"] .ms-record-proof,
+:root[data-theme="light"] .ms-credential-preview { background:#F3F7F4; border-color:#D5E1DA; }
+:root[data-theme="light"] .ms-record-proof>span,
+:root[data-theme="light"] .ms-credential-preview-action { background:#FFFFFF; border-color:#BCD7C8; color:var(--navigator-mint); }
+:root[data-theme="light"] .ms-record-document { text-decoration-color:#A8BDB0; }
+:root[data-theme="light"] .ms-record-document:hover { color:var(--navigator-mint); }
+:root[data-theme="light"] .ms-service-card .ms-service-icon { background:#E8F6EE; border-color:#CDDFD4; color:var(--navigator-mint); }
+:root[data-theme="light"] .ms-tool-cluster p { color:#195D44; }
+:root[data-theme="light"] .ms-desktop-nav,
+:root[data-theme="light"] .ms-resources>div,
+:root[data-theme="light"] .ms-mobile-menu nav { box-shadow:0 6px 20px #0A0A0B0A; }
+:root[data-theme="light"] .ms-desktop-nav>a:hover,
+:root[data-theme="light"] .ms-desktop-nav>a[aria-current],
+:root[data-theme="light"] .ms-resources[open]>summary,
+:root[data-theme="light"] .ms-mobile-menu nav a:hover,
+:root[data-theme="light"] .ms-resources a:hover { background:#E3F7EF; color:var(--navigator-mint); }
+:root[data-theme="light"] .ms-icon-button,
+:root[data-theme="light"] .ms-flip-button,
+:root[data-theme="light"] .ms-theme-toggle { background:#FFFFFF; border:1px solid #CDDFD4; color:#1B2924; }
+:root[data-theme="light"] :is(.ms-icon-button,.ms-flip-button,.ms-theme-toggle,.ms-outline-button,.ms-resume,.ms-mobile-menu>summary,.ms-project-pause,.ms-motion-toggle):hover { background:#E3F7EF; color:var(--navigator-mint); border-color:#A4C4B3; }
+:root[data-theme="light"] .ms-role.is-selected { background:#E3F7EF; color:var(--navigator-mint); box-shadow:inset 0 0 0 1px #BCD7C8; }
+:root[data-theme="light"] .ms-filters button[aria-pressed="true"] { color:#0A0A0B; }
+:root[data-theme="light"] .ms-filters button:not([aria-pressed="true"]):hover { background:#E3F7EF; }
+:root[data-theme="light"] .ms-search-dialog::backdrop { background:rgba(17,28,26,.28); }
+:root[data-theme="light"] .ms-search-dialog input { border-color:#BCD7C8; caret-color:var(--navigator-mint); }
+:root[data-theme="light"] .ms-search-dialog input::placeholder { color:#586A62; }
+:root[data-theme="light"] .ms-search-results a:hover,
+:root[data-theme="light"] .ms-search-results a:focus-visible { background:#E3F7EF; color:var(--navigator-mint); }
+.ms-process-card h3 { color:var(--on-surface); }
+.ms-process-card p { color:var(--on-surface-muted); }
+:root[data-theme="light"] .ms-process-card { background:#FFFFFF; border:1px solid #D5E1DA; box-shadow:0 8px 26px #0A0A0B09; }
+:root[data-theme="light"] .ms-process-overlay { background-image:linear-gradient(to top,#FFFFFF 0%,#FFFFFFFA 24%,#FFFFFFD9 46%,#FFFFFF20 78%,#FFFFFF00 100%); }
+:root[data-theme="light"] .ms-process-card h3 { color:#1B2924; }
+:root[data-theme="light"] .ms-process-card p { color:#465E51; }
+:root[data-theme="light"] .ms-footer-content h2 { color:#1B2924; }
+:root[data-theme="light"] .ms-copy-button { color:#1B2924; border-color:#BCD7C8; }
+:root[data-theme="light"] .ms-copy-button:hover { background:#E3F7EF; color:var(--navigator-mint); border-color:#A4C4B3; }
+:root[data-theme="light"] .ms-copy-button.is-copied { color:var(--navigator-mint); }
+:root[data-theme="light"] .ms-social-links a { color:#1B2924; border-color:#CDDFD4; }
+:root[data-theme="light"] .ms-social-links a:hover { color:var(--navigator-mint); background:#E3F7EF; border-color:#A4C4B3; }
+:root[data-theme="light"] .ms-footer-meta>a:hover { color:var(--navigator-mint); }
+:root[data-theme="light"] .ms-tape-back { background:#FFFFFF; color:var(--navigator-mint); }
+:root[data-theme="light"] :is(.ms-experience-card,.ms-foundation,.ms-credential,.ms-project-card,.ms-service-card,.ms-personal-note,.ms-note-card,.ms-skill,.ms-desktop-nav,.ms-resources,.ms-mobile-menu nav,.ms-search-dialog,.ms-footer-panel) :is(a,button,summary,input,[tabindex]):focus-visible { outline-color:#087C70; }
+
+
+:root[data-theme="light"] .ms-skill summary::after { color:var(--navigator-mint); }
+
+/* Keep role text and fills in the same theme throughout a switch. */
+.ms-role { transition:transform .2s ease,border-color .2s ease; }
+@media(prefers-reduced-motion:reduce) { .ms-role { transition:none; } }

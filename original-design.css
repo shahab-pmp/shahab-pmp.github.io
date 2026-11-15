@@ -1,0 +1,248 @@
+/* Restore the supplied Abdullah system: white, light grey, charcoal and original pastels. */
+:root { --ms-panel:var(--reference-panel); --ms-text-muted:var(--reference-muted); --ms-rule:var(--reference-rule); }
+html,body { overflow-x:clip; background:var(--reference-white); color:var(--reference-text); }
+::selection { background:var(--reference-ink); color:var(--reference-white); }
+.ms-header,.ms-hero { background:var(--reference-white); }
+.ms-brand,.ms-monogram,.ms-brand-period,.ms-hero h1 { color:var(--reference-ink); }
+.ms-brand,.ms-monogram { transition:transform .2s; }
+.ms-brand:hover { transform:scale(1.015); }
+.ms-brand:active { transform:scale(.98); }
+.ms-button,[data-palette-primary] { background:var(--reference-ink) !important; color:var(--reference-white) !important; border-color:var(--reference-ink) !important; }
+.ms-button:hover,[data-palette-primary]:hover { background:var(--brand-lime-hover) !important; }
+.ms-button:hover svg,.ms-footer-actions a:hover svg { animation:phoneRing .55s cubic-bezier(.36,.07,.19,.97) both; }
+.ms-role { --role-colour:var(--reference-purple); background:var(--role-colour); color:var(--reference-ink); transition:background-color .7s,transform .7s; }
+.ms-role[data-role="1"] { --role-colour:var(--reference-peach); }
+.ms-role[data-role="2"] { --role-colour:var(--reference-blue); }
+.ms-role.is-selected { background:var(--role-colour); }
+.ms-role:hover { transform:scale(1.05); }
+.ms-role:active { transform:scale(.95); }
+.ms-role-inner { display:inline-flex; align-items:center; justify-content:center; gap:10px; }
+.ms-role-label { font-size:16px; }
+.ms-role.is-selected .ms-role-inner { animation:slideFromRightCircle .58s cubic-bezier(.16,1,.3,1) both; }
+.ms-roles.is-previous .ms-role.is-selected .ms-role-inner { animation-name:slideFromLeftCircle; }
+.ms-role:not(.is-selected) .ms-role-inner { animation:iconArriveLeft .52s cubic-bezier(.16,1,.3,1) both; }
+.ms-hero-description.is-changing { animation:heroSmoothIn .5s cubic-bezier(.16,1,.3,1) both; }
+.ms-hero-meta { color:var(--reference-muted); }
+.ms-name-surprise { display:inline; border:0; padding:0; margin:0; font:inherit; line-height:inherit; letter-spacing:inherit; color:inherit; background:transparent; cursor:pointer; transition:transform .2s; }
+.ms-name-surprise:hover { transform:scale(1.01); }
+.ms-name-surprise:active { transform:scale(.95); }
+.ms-greeting { display:flex; align-items:center; justify-content:center; gap:10px; }
+.ms-wave { display:inline-flex; font-size:21px; line-height:1; border:0; background:transparent; padding:0; cursor:pointer; }
+.ms-wave span { display:inline-block; transform-origin:75% 75%; }
+.ms-wave.is-waving span { animation:wave-hand 1.2s ease-in-out; }
+.motion-ready .ms-hero-main { animation:ms-reference-hero-enter 1s cubic-bezier(.16,1,.3,1) both; }
+@keyframes ms-reference-hero-enter { from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)} }
+.ms-reference-loader { position:fixed; inset:0; z-index:99999; display:grid; place-items:center; background:var(--reference-white); color:var(--reference-ink); pointer-events:none; animation:preloaderCurtain .75s cubic-bezier(.16,1,.3,1) both; }
+.ms-reference-loader>span { font-family:var(--brand-display); font-size:30px; font-weight:700; letter-spacing:-.04em; animation:logoIntro .8s cubic-bezier(.16,1,.3,1) both; }
+.ms-reference-eyes { position:relative; width:100%; height:110px; overflow:clip; cursor:pointer; padding-top:4px; flex-shrink:0; }
+.ms-eyes-pair { display:flex; justify-content:center; align-items:flex-start; gap:32px; }
+.ms-eye { position:relative; width:195px; height:195px; flex-shrink:0; border-radius:50%; background:var(--reference-white); border:1.5px solid var(--reference-ink); display:grid; place-items:center; overflow:clip; transform-origin:50% 35%; transition:transform .2s; }
+.ms-pupil { position:relative; width:62%; height:62%; border-radius:50%; background:var(--reference-ink); transition:scale .2s; }
+.ms-pupil>span { position:absolute; top:33%; right:11%; width:20%; height:20%; background:var(--reference-white); border-radius:50%; }
+.ms-eye:last-child .ms-pupil>span { left:11%; right:auto; }
+.ms-reference-eyes:hover .ms-pupil { scale:1.04; }
+.ms-eye-sleep { position:absolute; top:18px; left:50%; translate:-50% 0; z-index:3; color:var(--reference-ink); font-size:15px; font-weight:700; opacity:0; pointer-events:none; }
+.ms-reference-eyes.is-sleeping .ms-eye-sleep { opacity:.7; animation:bounce 1s infinite; }
+.ms-reference-eyes.is-blinking .ms-eye { transform:scaleY(.06); }
+.ms-reference-eyes.is-winking .ms-eye:first-child { transform:scaleY(.06); }
+.ms-reference-eyes.is-winking .ms-eye:last-child { transform:scale(1.05,1.08); }
+.ms-reference-eyes.is-surprised .ms-eye { transform:scale(1.08,1.15); }
+.ms-reference-eyes.is-surprised .ms-pupil { scale:1.25; }
+.ms-reference-eyes.is-waking .ms-eye { transform:scaleY(1.12); }
+.ms-filters button[aria-pressed="true"] { background:var(--reference-ink); color:var(--reference-white); }
+.ms-tag { background:var(--reference-green); color:var(--reference-ink); }
+.ms-experience-card { border-radius:32px; background:var(--reference-white); }
+.ms-current { grid-column:auto; }
+.ms-current .ms-responsibilities { display:block; }
+.ms-current .ms-responsibilities li+li { margin-top:12px; }
+.ms-experience-card h3 { font-family:var(--brand-body); font-size:18px; font-weight:600; line-height:1.4; }
+.ms-role-meta { font-size:16px; }
+.ms-experience-card:last-child:nth-child(odd) { grid-column:1/-1; max-width:calc((100% - 24px)/2); width:100%; justify-self:center; }
+.has-js .ms-experience-card { display:grid; perspective:1200px; overflow:visible; }
+.has-js .ms-experience-card .ms-card-face { grid-area:1/1; width:100%; height:100%; display:flex !important; border-radius:32px; background:var(--reference-white); backface-visibility:hidden; -webkit-backface-visibility:hidden; transform-style:preserve-3d; transition:transform .7s cubic-bezier(.2,.8,.2,1); }
+.has-js .ms-experience-card [data-company-front] { transform:rotateY(0); }
+.has-js .ms-experience-card [data-company-back] { transform:rotateY(180deg); pointer-events:none; }
+.has-js .ms-experience-card.is-flipped [data-company-front] { transform:rotateY(-180deg); pointer-events:none; }
+.has-js .ms-experience-card.is-flipped [data-company-back] { transform:rotateY(0); pointer-events:auto; }
+.ms-work-photos { margin-top:80px; position:relative; }
+.ms-photo-marquee { overflow-x:auto; scrollbar-width:none; }
+.has-js .ms-photo-marquee { overflow:clip; }
+.ms-photo-track { width:max-content; display:flex; gap:20px; }
+.ms-photo-group { display:flex; gap:20px; }
+.ms-photo-group img { filter:grayscale(1); height:200px; width:auto; max-width:none; object-fit:cover; border-radius:20px; }
+.ms-photo-track.is-running { animation:ms-photo-loop 35s linear infinite; }
+.ms-photo-marquee:hover .ms-photo-track,.ms-photo-marquee:focus-within .ms-photo-track,.ms-photo-track.is-paused { animation-play-state:paused; }
+.ms-work-photos>p { text-align:center; font-size:15px; color:var(--reference-muted); margin-top:24px; }
+.ms-photo-pause { display:block; margin:8px auto 0; font-size:12px; color:var(--reference-muted); }
+@keyframes ms-photo-loop { to{transform:translateX(calc(-50% - 10px))} }
+.ms-academic-card h3,.ms-other-certifications h3,.ms-other-certifications strong { color:var(--reference-text); }
+.ms-academic-card p,.ms-other-certifications span { color:var(--reference-muted); }
+.ms-degree-mark { background:var(--reference-panel); color:var(--reference-ink); }
+.ms-other-certifications { border-color:var(--reference-rule); }
+.ms-certificate-image { border:1px solid var(--reference-rule); }
+.ms-tool-cluster-0 p { background:var(--reference-blue); }
+.ms-tool-cluster-1 p { background:var(--reference-purple); }
+.ms-tool-cluster-2 p { background:var(--reference-peach); }
+.ms-tool-cluster-3 p { background:var(--reference-green); }
+.ms-project-card { background:var(--reference-panel); color:var(--reference-text); transition:transform .3s; }
+.ms-project-card:hover { transform:translateY(-2px); }
+.ms-project-card h3 { color:var(--reference-text); }
+.ms-project-card p,.ms-project-card ul,.ms-project-visual span { color:var(--reference-muted); }
+.ms-project-card .ms-more { border-color:var(--reference-rule); }
+.ms-project-visual img { filter:none; transition:transform .5s; }
+.ms-project-card:hover .ms-project-visual img { transform:scale(1.05); }
+.ms-project-link { color:var(--reference-ink); }
+.ms-project-rail { scrollbar-width:none; scroll-behavior:auto; scroll-snap-type:none; }
+.ms-project-rail::-webkit-scrollbar { display:none; }
+.ms-project-pause { min-width:88px; font-size:12px; color:var(--reference-muted); }
+.ms-services-grid { gap:24px; }
+.ms-service-card { background:var(--reference-panel); border-radius:32px; padding:40px; }
+.ms-service-card h3 { color:var(--reference-ink); }
+.ms-service-card>p { color:var(--reference-muted); }
+.ms-service-icon { background:var(--reference-purple); color:var(--reference-ink); }
+.ms-service-card:nth-child(2) .ms-service-icon { background:var(--reference-peach); }
+.ms-service-card:nth-child(3) .ms-service-icon { background:var(--reference-green); }
+.ms-service-bottom { color:var(--reference-text); }
+.ms-service-bottom .ms-icon-button { transition:transform .3s,background-color .2s; }
+.ms-service-bottom .ms-icon-button:hover { transform:scale(1.05); }
+.ms-footer-panel { background:var(--reference-ink); }
+.ms-footer [data-palette-primary] { background:var(--reference-white) !important; color:var(--reference-ink) !important; border-color:var(--reference-white) !important; }
+.ms-footer [data-palette-primary]:hover { background:var(--reference-panel) !important; transform:scale(1.02); }
+.ms-footer :where(a,button):focus-visible { outline-color:var(--reference-white); }
+.ms-tool-marquee-track { animation-duration:35s; }
+.ms-sticker-layer { position:fixed; inset:0; z-index:9999; overflow:clip; pointer-events:none; }
+.ms-falling-sticker { position:absolute; top:0; height:72px; width:72px; object-fit:contain; animation:ms-sticker-fall var(--fall-duration) cubic-bezier(.25,.46,.45,.94) var(--fall-delay) both; }
+@keyframes ms-sticker-fall { 0%{opacity:0;transform:translateY(-110px) translateX(0) rotate(0)}12%{opacity:1}75%{opacity:.95}to{opacity:0;transform:translateY(115vh) translateX(var(--sway)) rotate(var(--rotate))} }
+@media(max-width:767px) {
+ .ms-hero { min-height:calc(100svh - 0px); }
+ .ms-reference-eyes { height:80px; }
+ .ms-eye { width:136px; height:136px; }
+ .ms-eyes-pair { gap:16px; }
+ .ms-eye-sleep { top:13px; font-size:13px; }
+ .ms-wave { font-size:19px; }
+ .ms-role-label { font-size:14.5px; }
+ .ms-experience-card:last-child:nth-child(odd) { grid-column:auto; max-width:none; }
+ .has-js .ms-experience-card .ms-card-face { border-radius:24px; }
+ .ms-photo-group img { height:160px; border-radius:16px; }
+ .ms-work-photos { margin-top:64px; }
+ .ms-service-card { padding:32px; border-radius:28px; }
+}
+@media(max-width:359px) { .ms-reference-eyes { height:66px; } .ms-eye { width:112px; height:112px; } .ms-eyes-pair { gap:12px; } }
+@media(prefers-reduced-motion:reduce) {
+ .motion-ready .ms-hero-main,.ms-role-inner,.ms-hero-description,.ms-wave span,.ms-eye-sleep,.ms-photo-track,.ms-falling-sticker { animation:none !important; }
+ .ms-eye,.ms-pupil,.ms-role,.ms-card-face,.ms-project-visual img { transition:none !important; }
+ .ms-reference-loader { display:none; }
+ .ms-photo-track { transform:none !important; }
+ .ms-reference-eyes.is-blinking .ms-eye { transform:none; }
+}
+/* Measured header and component typography from the original source. */
+:root { --reference-header-float:rgba(255,255,255,.95); --reference-header-shadow:rgba(0,0,0,.04); --reference-inverse-hover:rgba(255,255,255,.05); }
+.ms-header { transition:background-color .3s,box-shadow .3s; }
+.ms-header.is-scrolled { background:var(--reference-header-float); backdrop-filter:blur(12px); box-shadow:0 4px 24px var(--reference-header-shadow); }
+.ms-desktop-nav>a,.ms-resources>summary,.ms-resume,.ms-filters button { transition:background-color .2s,transform .2s; }
+.ms-resume:hover { transform:scale(1.05); }
+.ms-resume:active { transform:scale(.95); }
+.ms-service-card h3,.ms-personal-note h3 { font-family:var(--brand-body); font-size:28px; font-weight:500; letter-spacing:-.02em; }
+.ms-academic-card h3 { font-family:var(--brand-body); font-size:18px; font-weight:600; }
+.ms-search-dialog[open],.ms-resources[open]>div,.ms-mobile-menu[open] nav { animation:ms-reference-dialog-in .18s cubic-bezier(.16,1,.3,1) both; }
+@keyframes ms-reference-dialog-in { from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)} }
+.ms-copy-button.is-copied { background:var(--reference-inverse-hover); }
+.ms-copy-button.is-copied svg { animation:heroIconCrossfade .45s cubic-bezier(.16,1,.3,1) both; }
+:where(a,button,summary,[tabindex]):focus-visible { outline:2px solid var(--reference-ink); outline-offset:3px; }
+.ms-footer :where(a,button):focus-visible { outline-color:var(--reference-white); }
+@media(max-width:767px) { .ms-role { height:40px; width:40px; flex-shrink:0; } .ms-roles{min-height:40px;gap:10px} .ms-role svg { width:16px;height:16px; } .ms-role-inner{gap:8px} .ms-role.is-selected { width:auto; padding-inline:14px; } .ms-service-card h3,.ms-personal-note h3 {font-size:22px;} }
+@media(max-width:359px) { .ms-roles{gap:8px} .ms-role.is-selected{padding-inline:10px} .ms-role-label{font-size:13px} }
+@media(prefers-reduced-motion:reduce) { .ms-search-dialog[open],.ms-resources[open]>div,.ms-mobile-menu[open] nav,.ms-copy-button.is-copied svg { animation:none !important; } }
+
+.has-js .ms-photo-pause { display:flex; width:max-content; justify-content:center; }
+.ms-photo-marquee { mask-image:linear-gradient(to right,transparent,var(--reference-ink) 6%,var(--reference-ink) 94%,transparent); }
+/* Original 300ms primary-action label roll and icon tilt. */
+.ms-cta-roll { position:relative; display:inline-block; overflow:clip; height:22px; line-height:22px; white-space:nowrap; }
+.ms-cta-roll>span { display:block; transition:transform .3s cubic-bezier(.16,1,.3,1); }
+.ms-cta-roll>span+span { position:absolute; inset:0; transform:translateY(100%); }
+.ms-hero .ms-button:hover .ms-cta-roll>span:first-child,.ms-hero .ms-button:focus-visible .ms-cta-roll>span:first-child { transform:translateY(-100%); }
+.ms-hero .ms-button:hover .ms-cta-roll>span+span,.ms-hero .ms-button:focus-visible .ms-cta-roll>span+span { transform:translateY(0); }
+.ms-hero .ms-button svg { transition:transform .3s ease-out; }
+.ms-hero .ms-button:hover svg { animation:none; transform:scale(1.1) rotate(-6deg); }
+@media(prefers-reduced-motion:reduce) { .ms-cta-roll>span,.ms-hero .ms-button svg { transition:none; } }
+
+/* Exact gallery hover scale and primary-action hover shade from the reference. */
+:root { --reference-action-hover:#000000; }
+.ms-project-card:hover { transform:none; }
+.ms-project-visual img { transition:transform .3s ease-out; }
+.ms-project-card:hover .ms-project-visual img { transform:scale(1.02); }
+.ms-brand:not(:active):hover { transform:none; }
+.ms-hero .ms-button:hover { background:var(--reference-action-hover) !important; }
+
+.ms-greeting { font-family:var(--brand-display); font-size:18px; font-weight:400; } @media(max-width:767px){.ms-greeting{font-size:15px}.ms-hero-description{font-size:15px}.ms-hero .ms-button{min-height:48px;font-size:14.5px;padding:12px 24px}}
+
+
+/* Transparent employer marks, matching the reference's unboxed logo headers. */
+.ms-company-logo { display:block; width:auto; height:40px; max-width:220px; object-fit:contain; object-position:left center; background:transparent; border:0; border-radius:0; flex-shrink:0; }
+.ms-company-logo--ifast { height:48px; max-width:200px; }
+.ms-company-logo--corvit { height:52px; max-width:150px; }
+.ms-delivered-products { display:flex; flex-direction:column; align-items:flex-start; gap:12px; min-width:0; }
+@media(max-width:767px) { .ms-company-logo--ifast { height:44px; max-width:180px; } .ms-company-logo--corvit { height:48px; } }
+
+
+/* Seated cutout overlaps the footer, as in the supplied reference. */
+.ms-footer-chair { position:absolute; z-index:3; left:-80px; bottom:0; display:block; width:620px; max-width:50vw; height:auto; object-fit:contain; pointer-events:none; user-select:none; }
+.ms-footer-chair-mobile { display:none; }
+@media(min-width:768px) and (max-width:1190px) { .ms-footer-chair { left:-70px; width:500px; max-width:52vw; } }
+@media(max-width:767px) {
+ .ms-footer-chair { display:none; }
+ .ms-footer-chair-mobile { display:block; width:calc(100% + 48px); max-width:none; height:auto; margin:28px -24px -28px; object-fit:contain; pointer-events:none; user-select:none; }
+}
+
+
+.ms-hero .ms-meet-icon { display:block; width:20px; height:20px; flex-shrink:0; object-fit:contain; transition:transform .3s ease-out; }
+.ms-hero .ms-button:hover .ms-meet-icon { transform:scale(1.1) rotate(-6deg); }
+@media(prefers-reduced-motion:reduce) { .ms-hero .ms-meet-icon { transition:none; } }
+
+
+/* Uniform pale-blue discs and consistent logo sizing across every tool. */
+.ms-tool-cluster .ms-tool-badge { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:50px; padding:6px 12px 6px 7px; background:var(--reference-white); }
+.ms-tool-cluster .ms-tool-icon { display:inline-flex; align-items:center; justify-content:center; flex:0 0 36px; width:36px; height:36px; padding:0; border:1px solid #F7F7F7; border-radius:50%; background:#F1FBFE; }
+.ms-tool-badge .ms-tool-icon img { width:20px; height:20px; display:block; flex-shrink:0; object-fit:contain; }
+@media(max-width:767px) {
+ .ms-tool-cluster .ms-tool-badge { min-height:46px; padding:6px 9px 6px 6px; gap:6px; }
+ .ms-tool-cluster .ms-tool-icon { flex-basis:32px; width:32px; height:32px; }
+ .ms-tool-badge .ms-tool-icon img { width:18px; height:18px; }
+}
+
+
+/* Project-specific UI previews replace the previous decorative app symbols. */
+.ms-project-card { padding:20px; }
+.ms-project-visual { display:block; min-height:0; }
+.ms-project-visual img { display:block; width:100%; height:auto; aspect-ratio:8/5; object-fit:contain; border-radius:16px; border:1px solid var(--reference-rule); background:#EAEFF3; }
+.ms-project-visual span { display:block; max-width:none; text-align:left; margin-top:16px; font-size:12px; }
+.ms-project-card h3 { font-size:26px; margin-top:8px; }
+.ms-project-card:hover .ms-project-visual img { transform:none; }
+
+/* Intro sequence */
+html.ms-intro-running { overflow:hidden; }
+.ms-reference-loader { animation:none; background:var(--page-bg); transition:opacity .6s ease .3s; }
+.ms-reference-loader.is-zoom { opacity:0; }
+.ms-loader-stage { display:flex; flex-direction:column; align-items:center; gap:28px; }
+.ms-loader-logo { display:block; width:128px; height:128px; border-radius:50%; background:#0A0A0B; box-shadow:0 0 0 1px #ffffff1f,0 24px 60px #00000055; opacity:0; animation:ms-loader-logo-in .8s cubic-bezier(.16,1,.3,1) .1s both; will-change:transform; }
+.ms-loader-logo .ms-navigator-needle { transform-origin:12px 12px; animation:ms-loader-needle 1.7s cubic-bezier(.22,.9,.28,1) .35s both; }
+.ms-loader-name { font-family:var(--brand-display); font-size:clamp(22px,4.2vw,34px); letter-spacing:.04em; text-transform:uppercase; color:var(--page-text); opacity:0; animation:ms-loader-name-in .8s cubic-bezier(.16,1,.3,1) .7s both; }
+.ms-loader-first { font-weight:300; }
+.ms-loader-last { font-weight:800; }
+.ms-reference-loader.is-zoom .ms-loader-logo { animation:ms-loader-zoom .9s cubic-bezier(.7,0,.84,0) both; }
+.ms-reference-loader.is-zoom .ms-loader-name { animation:ms-loader-name-out .3s ease both; }
+@keyframes ms-loader-logo-in { from { opacity:0; transform:scale(.35) translateY(30px); } to { opacity:1; transform:none; } }
+@keyframes ms-loader-needle { 0% { transform:rotate(-720deg); } 62% { transform:rotate(18deg); } 78% { transform:rotate(-9deg); } 90% { transform:rotate(4deg); } 100% { transform:rotate(0); } }
+@keyframes ms-loader-name-in { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
+@keyframes ms-loader-name-out { to { opacity:0; transform:translateY(-8px); } }
+@keyframes ms-loader-zoom { from { opacity:1; transform:none; } to { opacity:1; transform:scale(60); } }
+
+/* Smoother, sharper intro: the logo is drawn large and scaled down, so zooming in never goes blurry. */
+.ms-loader-logo { width:440px; height:440px; margin:-156px; box-shadow:none; will-change:auto; transform:scale(.2909); transform-origin:50% 50%; backface-visibility:hidden; animation:ms-loader-logo-in 1s cubic-bezier(.16,1,.3,1) .05s both; }
+.ms-reference-loader { transition:opacity .7s cubic-bezier(.4,0,.2,1) .35s; }
+.ms-reference-loader.is-zoom .ms-loader-logo { animation:ms-loader-zoom 1s cubic-bezier(.6,0,.2,1) both; }
+@keyframes ms-loader-logo-in { from { opacity:0; transform:scale(.08) rotate(-12deg); } to { opacity:1; transform:scale(.2909) rotate(0); } }
+@keyframes ms-loader-zoom { from { opacity:1; transform:scale(.2909); } 70% { opacity:1; } to { opacity:0; transform:scale(5.5); } }
+.ms-loader-logo .ms-navigator-needle { animation:ms-loader-needle 1.8s cubic-bezier(.22,.9,.28,1) .3s both; }
+/* The page waits quietly underneath, then its hero enters as the intro opens. */
+html.ms-intro-running .ms-hero-main { animation-play-state:paused; }

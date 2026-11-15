@@ -1,0 +1,179 @@
+/* Borderless tiles with contact and ambient shadows: a raised surface, not an outline. */
+:root {
+ --tile-shadow:0 3px 8px #0000002E,0 16px 36px #00000040;
+ --tile-shadow-hover:0 5px 12px #00000033,0 20px 42px #0000004D;
+ --small-tile-shadow:0 2px 5px #00000024,0 7px 16px #00000024;
+}
+:root[data-theme="light"] {
+ --tile-shadow:0 2px 5px #0A0A0B0A,0 12px 30px #0A0A0B12;
+ --tile-shadow-hover:0 3px 7px #0A0A0B0F,0 16px 36px #0A0A0B19;
+ --small-tile-shadow:0 1px 3px #0A0A0B09,0 5px 12px #0A0A0B0D;
+}
+:root :is(.ms-experience-card,.ms-foundation,.ms-credential,.ms-project-card,.ms-service-card,.ms-personal-note,.ms-personal-photo,.ms-note-card,.ms-footer-panel,.ms-process-card),
+:root[data-theme] :is(.ms-experience-card,.ms-foundation,.ms-credential,.ms-project-card,.ms-service-card,.ms-personal-note,.ms-personal-photo,.ms-note-card,.ms-footer-panel,.ms-process-card) {
+ border:0; box-shadow:var(--tile-shadow);
+}
+:root :is(.ms-learning li,.ms-skill,.ms-tool-badge,.ms-tool-cluster p,.ms-desktop-nav,.ms-resources>div,.ms-mobile-menu nav),
+:root[data-theme] :is(.ms-learning li,.ms-skill,.ms-tool-badge,.ms-tool-cluster p,.ms-desktop-nav,.ms-resources>div,.ms-mobile-menu nav) {
+ border:0; box-shadow:var(--small-tile-shadow);
+}
+:root :is(.ms-record-proof,.ms-credential-preview,.ms-foundation-mark,.ms-profile-facts span,.ms-foundation-dates,.ms-tag,.ms-credential-badge,.ms-service-icon,.ms-tool-icon),
+:root[data-theme] :is(.ms-record-proof,.ms-credential-preview,.ms-foundation-mark,.ms-profile-facts span,.ms-foundation-dates,.ms-tag,.ms-credential-badge,.ms-service-icon,.ms-tool-icon) {
+ border:0;
+}
+:root[data-theme] .ms-search-dialog { border:0; box-shadow:var(--tile-shadow-hover); }
+:root[data-theme] :is(.ms-credential,.ms-project-card,.ms-service-card):hover,
+:root[data-theme] :is(.ms-credential,.ms-project-card,.ms-service-card):focus-within { box-shadow:var(--tile-shadow-hover); }
+:root[data-theme] .ms-foundation-mark,
+:root[data-theme] .ms-foundation:hover .ms-foundation-mark { box-shadow:var(--small-tile-shadow); }
+.ms-record-badge img { filter:drop-shadow(0 4px 6px #00000024); }
+:root[data-theme="light"] .ms-record-badge img { filter:drop-shadow(0 4px 6px #0A0A0B14); }
+
+
+:root[data-theme] .ms-service-card .ms-service-icon,
+:root[data-theme] .ms-project-visual img { border:0; }
+
+/* Shared, generously rounded corners inspired by the meeting button. */
+:root { --tile-radius:40px; }
+:root[data-theme] :is(.ms-experience-card,.ms-card-face,.ms-foundation,.ms-credential,.ms-project-card,.ms-service-card,.ms-personal-note,.ms-personal-photo,.ms-note-card,.ms-footer-panel,.ms-process-card,.ms-skill,.ms-search-dialog) {
+ border-radius:var(--tile-radius);
+}
+:root[data-theme] :is(.ms-learning li,.ms-tool-badge,.ms-tool-cluster p) { border-radius:999px; }
+@media(max-width:767px) { :root { --tile-radius:32px; } }
+
+/* Consistent owner wordmark: uppercase, light first name and bold surname. */
+.ms-owner-name { font-family:var(--brand-display); text-transform:uppercase; }
+.ms-owner-name .ms-name-first { font-weight:300; }
+.ms-owner-name .ms-name-last { font-weight:700; }
+.ms-brand .ms-owner-name { white-space:nowrap; }
+@media(max-width:767px) { .ms-header .ms-brand { font-size:15px; } }
+@media(max-width:359px) { .ms-header .ms-brand { font-size:12px; gap:6px; } }
+
+/* Owner preference: every action button uses the meeting CTA's green fill. */
+:root[data-theme] :is(button:not(.ms-name-surprise),.ms-button,.ms-outline-button,.ms-resume,.ms-icon-button,.ms-record-document,.ms-credential-link,.ms-project-link,.ms-social-links a,.ms-mobile-menu>summary) {
+ background:var(--navigator-mint) !important;
+ color:#0A0A0B !important;
+ border:0 !important;
+ border-radius:999px;
+ text-decoration:none;
+}
+:root[data-theme] :is(button:not(.ms-name-surprise),.ms-button,.ms-outline-button,.ms-resume,.ms-icon-button,.ms-record-document,.ms-credential-link,.ms-project-link,.ms-social-links a,.ms-mobile-menu>summary):hover {
+ background:#35F7A2 !important;
+ color:#0A0A0B !important;
+}
+:root[data-theme] :is(.ms-record-document,.ms-credential-link,.ms-project-link,.ms-social-links a,.ms-text-button) { padding:10px 18px; min-height:44px; }
+:root[data-theme] .ms-social-links .ms-email-link { padding:10px; }
+:root[data-theme] .ms-filters button[aria-pressed="true"] { font-weight:700; text-decoration:underline; text-underline-offset:5px; }
+:root[data-theme] :is(.ms-project-pause,.ms-motion-toggle,.ms-theme-toggle)[aria-pressed="true"] { box-shadow:inset 0 0 0 2px #0A0A0B; }
+
+/* Keep the tape control compact and stable in both playback states. */
+:root[data-theme] .ms-scene-tapes .ms-motion-toggle {
+ display:inline-flex; align-items:center; justify-content:center; gap:8px;
+ width:168px; height:44px; min-height:44px; padding:0 18px;
+ font:500 13px/1 var(--brand-body); white-space:nowrap;
+ box-shadow:0 3px 8px #00000018;
+}
+.ms-motion-toggle svg { width:16px; height:16px; flex-shrink:0; }
+.ms-motion-toggle .ms-motion-play { display:none; }
+.ms-motion-toggle[aria-pressed="true"] .ms-motion-pause { display:none; }
+.ms-motion-toggle[aria-pressed="true"] .ms-motion-play { display:block; }
+@media(prefers-reduced-motion:reduce) { :root[data-theme] .ms-scene-tapes .ms-motion-toggle { display:none !important; } }
+
+/* Recruiter-first section rhythm, with matching headings and surface alternation. */
+.ms-intro-summary { max-width:58ch; margin:0 auto 28px; padding-inline:16px; font:400 clamp(15px,1.4vw,18px)/1.65 var(--brand-body); color:var(--page-muted); text-wrap:pretty; }
+.ms-capabilities-heading { text-align:center; }
+.ms-capabilities-heading p { margin:18px auto 0; color:var(--page-muted); max-width:60ch; line-height:1.65; }
+#capabilities .ms-tools-orbit { margin-top:72px; }
+#capabilities .ms-tools-title h3 { font-size:clamp(26px,3vw,38px); line-height:1.2; font-weight:650; letter-spacing:-.035em; color:var(--page-text); }
+#certifications h2,#academic h2 { color:var(--page-text); }
+#certifications h2+p,#academic h2+p { color:var(--page-muted); }
+:root[data-theme] :is(#top,#recent-work,#certifications,#philosophy,#beyond-work) { background:var(--page-bg); }
+:root[data-theme] :is(#experiences,#capabilities,#academic,#services,#blog) { background:var(--section-bg); }
+@media(max-width:767px) { #capabilities .ms-tools-orbit { margin-top:48px; } .ms-intro-summary { margin-bottom:24px; } }
+
+/* Both caution strips share the portfolio's green action colour in either theme. */
+:root[data-theme] :is(.ms-tape-front,.ms-tape-back) { background:var(--navigator-mint); color:#0A0A0B; }
+
+/* Navigation highlights match the owner's green buttons. */
+:root[data-theme] .ms-desktop-nav>a:hover,
+:root[data-theme] .ms-desktop-nav>a:focus-visible,
+:root[data-theme] .ms-desktop-nav>a[aria-current],
+:root[data-theme] .ms-resources>summary:hover,
+:root[data-theme] .ms-resources>summary:focus-visible,
+:root[data-theme] .ms-resources[open]>summary,
+:root[data-theme] .ms-resources a:hover,
+:root[data-theme] .ms-resources a:focus-visible,
+:root[data-theme] .ms-mobile-menu nav a:hover,
+:root[data-theme] .ms-mobile-menu nav a:focus-visible {
+ background:var(--navigator-mint); color:#0A0A0B;
+}
+
+/* Preserve authentic company logo colours in both themes. */
+:root[data-theme] .ms-experience-card .ms-company-logo { filter:none; }
+
+/* Owner portraits stay monochrome; step icons keep their original artwork. */
+.ms-process-card .ms-process-portrait { filter:grayscale(1); object-fit:cover; object-position:50% 18%; }
+
+/* Preserve the full university emblem with enough contrast in either theme. */
+:root[data-theme] .ms-foundation .ms-university-mark {
+ flex:0 0 88px; width:88px; height:88px; padding:7px;
+ border-radius:20px; background:#FFFFFF; transform:none;
+}
+.ms-university-mark img { display:block; width:100%; height:100%; object-fit:contain; filter:none; }
+
+/* Owner-supplied 2009 emblem, isolated on transparency without a backing tile. */
+:root[data-theme] .ms-foundation .ms-university-mark,
+:root[data-theme] .ms-foundation:hover .ms-university-mark {
+ flex-basis:100px; width:100px; height:100px; padding:0;
+ background:transparent; border-radius:0; box-shadow:none; transform:none;
+}
+
+/* Service icon circles use the same bright green as the portfolio actions. */
+:root[data-theme] .ms-service-card .ms-service-icon {
+ background:var(--navigator-mint); color:#0A0A0B; border:0;
+}
+
+/* Education date badge matches the chosen green accent. */
+:root[data-theme] .ms-foundation .ms-foundation-dates { background:var(--navigator-mint); color:#0A0A0B; }
+
+/* Equal header circles without a persistent selected-state ring. */
+:root[data-theme] .ms-header :is(.ms-theme-toggle,.ms-search-button) {
+ width:44px; height:44px; min-width:44px; min-height:44px;
+ padding:0; border:0; border-radius:50%; box-shadow:none;
+}
+:root[data-theme] .ms-header .ms-theme-toggle[aria-pressed="true"] { box-shadow:none; }
+
+/* Profile badges share the chosen bright green accent. */
+:root[data-theme] .ms-personal-note .ms-profile-facts span {
+ background:var(--navigator-mint); color:#0A0A0B; border:0; border-radius:999px;
+}
+
+/* Give the footer portrait a more prominent scale without shifting the contact copy. */
+@media(min-width:1191px) {
+ .ms-footer .ms-footer-chair { width:740px; max-width:56vw; left:-95px; }
+}
+@media(min-width:768px) and (max-width:1190px) {
+ .ms-footer .ms-footer-chair { width:580px; max-width:56vw; left:-80px; }
+}
+@media(max-width:767px) {
+ .ms-footer .ms-footer-chair-mobile { width:calc(100% + 80px); margin:28px -40px -28px; }
+}
+
+/* Tool-category headings match the owner's chosen green accent. */
+:root[data-theme] #capabilities .ms-tool-cluster>p { color:var(--navigator-mint); }
+
+/* Tool categories: green pill background with black lettering. */
+:root[data-theme] #capabilities .ms-tool-category h4,
+:root[data-theme] #capabilities .ms-tool-cluster>p {
+ background:var(--navigator-mint); color:#08090B;
+}
+
+/* Service labels: green background and black text. */
+:root[data-theme] .ms-service-bottom>span { background:var(--navigator-mint); color:#08090B; }
+
+/* Service labels share the rounded pill shape of the other badges. */
+:root[data-theme] .ms-service-bottom>span {
+ display:inline-flex; align-items:center; padding:9px 16px; min-height:38px;
+ border-radius:999px; background:var(--navigator-mint); color:#08090B;
+ line-height:1.4;
+}

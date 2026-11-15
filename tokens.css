@@ -1,0 +1,10 @@
+/* Navigator palette. Reference token names remain as compatibility aliases. */
+:root {
+ --brand-ivory:#FFFFFF; --brand-black:#0A0A0B; --brand-lime:#14F590; --brand-lime-hover:#0DE17F; --brand-lime-wash:#E3FAEE;
+ --brand-transparent:transparent; --brand-dark-panel:#151618; --brand-inverse-muted:#A9ABAF; --brand-inverse-rule:#3C5149;
+ --brand-display:"Geist",sans-serif; --brand-body:"Inter",sans-serif;
+ --neutral-3:#F2F7F5; --neutral-10:#DEE8E3; --neutral-65:#586A62;
+ --tone-black-10:rgba(13,15,23,.10); --tone-black-40:rgba(13,15,23,.40);
+ --reference-white:#FFFFFF; --reference-ink:#0A0A0B; --reference-text:#1B2924; --reference-muted:#586A62; --reference-panel:#F2F7F5; --reference-rule:#DEE8E3;
+ --reference-purple:#E3FAEE; --reference-peach:#E4F8F9; --reference-blue:#E4F8F9; --reference-green:#E3FAEE;
+}

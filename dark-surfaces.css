@@ -1,0 +1,72 @@
+/* Shared deep green-charcoal surfaces, requested to match the contact panel. */
+:root { --surface-dark:#111214; --surface-dark-line:#2C2D30; --on-surface:#F4F4F5; --on-surface-muted:#A9ABAF; }
+:is(.ms-experience-card,.ms-card-face,.ms-foundation,.ms-credential,.ms-learning li,.ms-project-card,.ms-service-card,.ms-personal-note,.ms-personal-photo,.ms-note-card,.ms-skill,.ms-desktop-nav,.ms-resources>div,.ms-mobile-menu nav,.ms-search-dialog),
+.ms-tool-cluster .ms-tool-badge {
+ background:var(--surface-dark);
+ color:var(--on-surface);
+ --reference-text:var(--on-surface);
+ --reference-muted:var(--on-surface-muted);
+ --ms-text-muted:var(--on-surface-muted);
+ --reference-rule:var(--surface-dark-line);
+ --ms-rule:var(--surface-dark-line);
+ --action-ink:var(--navigator-mint);
+ --action-wash:#26272A;
+ border-color:var(--surface-dark-line);
+}
+.has-js .ms-experience-card .ms-card-face { background:var(--surface-dark); }
+:is(.ms-foundation-copy,.ms-credential-copy,.ms-service-card,.ms-personal-note,.ms-note-card,.ms-project-card) h3,
+.ms-company-name,.ms-experience-card h3,.ms-learning h4,.ms-search-dialog h2 { color:var(--on-surface); }
+.ms-role-meta,.ms-responsibilities,.ms-company-projects,.ms-card-footer,.ms-credential-category,
+.ms-foundation-copy>p:last-child,.ms-credential-copy>p,.ms-learning li p,.ms-service-card>p,.ms-project-card>p,
+.ms-personal-note p,.ms-personal-photo figcaption,.ms-note-card p,.ms-languages,.ms-search-empty { color:var(--on-surface-muted); }
+.ms-experience-card .ms-company-logo { filter:brightness(0) invert(1); }
+.ms-experience-card .ms-more,.ms-project-card .ms-more { border-color:var(--surface-dark-line); }
+.ms-more summary { color:inherit; }
+.ms-card-footer .ms-flip-button,.ms-company-back .ms-text-button { color:var(--navigator-mint); }
+.ms-flip-button { background:var(--surface-dark); border:1px solid #3A3B3F; }
+.ms-flip-button:hover { background:#26272A; }
+.ms-company-projects li { border-color:var(--surface-dark-line); }
+.ms-credential-preview { background:var(--surface-dark); border-color:var(--surface-dark-line); }
+.ms-credential-preview-action { border:1px solid #3A3B3F; }
+.ms-credential-link,.ms-project-link,.ms-service-bottom { color:var(--navigator-mint); }
+.ms-learning li>svg { color:var(--navigator-mint); }
+.ms-foundation-mark { border:1px solid #3A3B3F; }
+.ms-foundation-dates,.ms-tag,.ms-credential-badge,.ms-profile-facts span {
+ background:var(--surface-dark); color:var(--navigator-mint); border:1px solid var(--surface-dark-line);
+}
+.ms-credential-badge { border-color:#3A3B3F; }
+.ms-foundation-mark svg { background:var(--surface-dark); color:var(--navigator-mint); border-color:#3A3B3F; }
+.ms-service-card .ms-service-icon { background:var(--surface-dark); border:1px solid #3A3B3F; color:var(--navigator-mint); }
+.ms-service-card:nth-child(2) .ms-service-icon,.ms-service-card:nth-child(3) .ms-service-icon { background:var(--surface-dark); color:var(--navigator-mint); }
+.ms-tool-cluster p { background:var(--surface-dark); color:var(--navigator-mint); border:1px solid var(--surface-dark-line); }
+.ms-tool-cluster .ms-tool-badge { border-color:var(--surface-dark-line); }
+.ms-tool-cluster .ms-tool-icon { background:#E7F8FA; border-color:#DDEEEF; }
+.ms-skill-grid { gap:12px 24px; }
+.ms-skill { border:1px solid var(--surface-dark-line); border-radius:16px; padding:0 20px; }
+.ms-skill summary { color:var(--on-surface); font-size:16px; }
+.ms-skill summary::after { color:var(--navigator-mint); }
+.ms-skill p { color:var(--on-surface-muted); }
+.ms-desktop-nav>a,.ms-resources>summary { color:var(--on-surface); }
+.ms-desktop-nav>a:hover,.ms-desktop-nav>a[aria-current],.ms-resources[open]>summary { background:#26272A; color:var(--navigator-mint); }
+.ms-resources>div a,.ms-mobile-menu nav a,.ms-mobile-search { color:var(--on-surface); }
+.ms-mobile-menu nav a:hover,.ms-resources a:hover { background:#26272A; color:var(--navigator-mint); }
+.ms-resume,.ms-mobile-menu>summary,.ms-role,.ms-filters button,.ms-outline-button,.ms-project-pause,.ms-motion-toggle {
+ background:var(--surface-dark); color:var(--on-surface); border:1px solid var(--surface-dark-line);
+}
+.ms-outline-button:hover,.ms-resume:hover,.ms-mobile-menu>summary:hover,.ms-project-pause:hover,.ms-motion-toggle:hover { background:#26272A; color:var(--navigator-mint); }
+.ms-role { --role-colour:var(--surface-dark); }
+.ms-role[data-role="0"],.ms-role[data-role="1"],.ms-role[data-role="2"] { --role-colour:var(--surface-dark); }
+.ms-role.is-selected { background:var(--surface-dark); color:var(--navigator-mint); box-shadow:inset 0 0 0 1px #3A3B3F; }
+.ms-filters button[aria-pressed="true"] { background:var(--navigator-mint); color:var(--surface-dark); border-color:var(--navigator-mint); }
+.ms-search-dialog input { background:var(--surface-dark); border-color:#3A3B3F; color:var(--on-surface); caret-color:var(--navigator-mint); }
+.ms-search-dialog input::placeholder { color:#A9ABAF; opacity:1; }
+.ms-search-results a { color:var(--on-surface); }
+.ms-search-results a:hover,.ms-search-results a:focus-visible { background:#26272A; color:var(--navigator-mint); }
+.ms-process-card { background:var(--surface-dark); }
+.ms-process-overlay { background-image:linear-gradient(to top,#0A0A0B 0%,#0A0A0BED 25%,#0A0A0B80 62%,#0A0A0B00 100%); }
+:is(.ms-experience-card,.ms-foundation,.ms-credential,.ms-project-card,.ms-service-card,.ms-personal-note,.ms-note-card,.ms-skill,.ms-desktop-nav,.ms-resources,.ms-mobile-menu,.ms-search-dialog) :is(a,button,summary,input,[tabindex]):focus-visible { outline-color:var(--navigator-mint); }
+.ms-role:focus-visible,.ms-outline-button:focus-visible,.ms-resume:focus-visible,.ms-project-pause:focus-visible,.ms-motion-toggle:focus-visible { outline-color:var(--focus-ring); }
+@media(max-width:767px) { .ms-skill { padding-inline:16px; } .ms-skill-grid { gap:10px; } }
+
+
+.ms-mobile-menu>summary:focus-visible { outline-color:var(--focus-ring); }

@@ -1,0 +1,74 @@
+/* Navigator identity: original mint/cyan compass, translated into a readable site palette. */
+:root {
+ --navigator-mint:#14F590; --navigator-cyan:#0FCCD8;
+ --action-ink:var(--navigator-mint); --action-wash:#E3F7EF;
+ --reference-muted:#586A62; --focus-ring:#087C70;
+}
+html { accent-color:var(--action-ink); }
+html,body { color:var(--reference-text); }
+::selection { background:#B7F6D6; color:var(--reference-ink); }
+#experiences,#capabilities,#philosophy,#beyond-work { background:var(--reference-panel); }
+#academic,#recent-work,#services,#blog { background:var(--reference-white); }
+.ms-desktop-nav { background:var(--reference-panel); border:1px solid var(--reference-rule); }
+.ms-desktop-nav>a:hover,.ms-desktop-nav>a[aria-current],.ms-resources[open]>summary { background:var(--reference-green); color:var(--action-ink); }
+.ms-mobile-menu nav a:hover,.ms-mobile-menu nav a:focus-visible,.ms-resources a:hover { background:var(--action-wash); }
+.ms-brand { gap:10px; }
+.ms-header .ms-navigator { display:block; width:40px; height:40px; flex-shrink:0; background:#0A0A0B; border-radius:50%; }
+.ms-navigator-needle { transform-origin:12px 12px; transform:rotate(calc(var(--navigator-turn,0deg) + var(--navigator-hover,0deg))); transition:transform .55s cubic-bezier(.22,1.4,.4,1); }
+.ms-brand:hover .ms-navigator-needle,.ms-brand:focus-visible .ms-navigator-needle { --navigator-hover:24deg; }
+.ms-button,[data-palette-primary],.ms-footer [data-palette-primary] { background:var(--navigator-mint) !important; color:var(--reference-ink) !important; border-color:var(--navigator-mint) !important; }
+.ms-button:hover,[data-palette-primary]:hover,.ms-footer [data-palette-primary]:hover { background:#0DE17F !important; color:var(--reference-ink) !important; border-color:#0DE17F !important; }
+.ms-button:focus-visible,[data-palette-primary]:focus-visible { outline-color:var(--focus-ring); }
+.ms-filters button[aria-pressed="true"] { background:var(--reference-ink); color:var(--navigator-mint); }
+.ms-tag { background:#DDF9E9; color:#176141; }
+.ms-resume,.ms-mobile-menu>summary { background:var(--reference-panel); }
+.ms-role { color:var(--reference-ink); }
+.ms-role[data-role="0"] { --role-colour:#E3FAEE; }
+.ms-role[data-role="1"] { --role-colour:#E4F8F9; }
+.ms-role[data-role="2"] { --role-colour:#E3FAEE; }
+.ms-role.is-selected { box-shadow:inset 0 0 0 1px #BCDFD0; }
+.ms-tool-cluster-0 p,.ms-tool-cluster-2 p { background:#E4F8F9; color:#225D62; }
+.ms-tool-cluster-1 p,.ms-tool-cluster-3 p { background:#E3FAEE; color:#255D45; }
+.ms-tool-cluster .ms-tool-icon { background:#E7F8FA; border-color:#DDEEEF; }
+.ms-tool-badge { border-color:var(--reference-rule); }
+.ms-credential-badge-pmp { background:#E3FAEE; color:#176141; }
+.ms-credential-badge-csm { background:#E4F8F9; color:#225D62; }
+.ms-credential-preview { background:var(--reference-panel); border-color:var(--reference-rule); }
+.ms-credential-preview-action { background:var(--reference-ink); color:var(--navigator-mint); }
+.ms-foundation-mark { background:var(--reference-ink); }
+.ms-foundation-mark>span { color:var(--navigator-mint); }
+.ms-foundation-mark svg { background:var(--reference-green); border-color:var(--reference-white); }
+.ms-service-icon { background:var(--reference-green); color:var(--action-ink); }
+.ms-service-card:nth-child(2) .ms-service-icon { background:var(--reference-blue); color:#225D62; }
+.ms-service-card:nth-child(3) .ms-service-icon { background:var(--reference-green); color:var(--action-ink); }
+.ms-icon-button:hover,.ms-flip-button:hover { background:var(--reference-ink); color:var(--navigator-mint); }
+.ms-project-visual img { background:#EDF4F0; border-color:var(--reference-rule); }
+.ms-credential:hover,.ms-credential:focus-within,.ms-service-card:hover,.ms-service-card:focus-within,.ms-project-card:focus-within { border-color:#B7D9C9; }
+.ms-profile-facts span { background:var(--reference-panel); color:var(--action-ink); }
+.ms-footer-panel { background:var(--reference-ink); }
+.ms-footer-content>p,.ms-footer-meta { color:#A9ABAF; }
+.ms-copy-button { color:var(--reference-white); border-color:#526A5F; }
+.ms-copy-button:hover { background:#151618; border-color:#8FA99C; }
+.ms-copy-button.is-copied { color:var(--navigator-mint); }
+.ms-footer-name { display:inline-flex; align-items:center; justify-content:center; gap:12px; }
+.ms-footer-name img { display:block; width:36px; height:36px; flex-shrink:0; border-radius:50%; background:#151618; outline:1px solid #FFFFFF20; }
+.ms-footer-meta>a:hover,.ms-social-links a:hover { color:var(--navigator-mint); }
+.ms-footer :where(a,button):focus-visible { outline-color:var(--navigator-mint); }
+.ms-skip-link { background:var(--reference-ink); color:var(--navigator-mint); }
+:where(a,button,summary,input,textarea,select,[tabindex]):focus-visible { outline-color:var(--focus-ring); }
+@media(max-width:767px) {
+ .ms-header .ms-navigator { width:34px; height:34px; }
+ .ms-brand { gap:8px; }
+ .ms-footer-name { font-size:27px; gap:10px; }
+ .ms-footer-name img { width:30px; height:30px; }
+}
+@media(max-width:359px) { .ms-header .ms-navigator { width:30px; height:30px; } .ms-brand { gap:6px; font-size:15px; } .ms-footer-name { font-size:23px; } }
+@media(prefers-reduced-motion:reduce) { .ms-navigator-needle { transform:none; transition:none; } }
+
+
+
+/* Center the owner name and copyright; email joins the contact links above. */
+.ms-footer-meta { display:block; margin-inline:0; padding-top:16px; text-align:center; }
+.ms-footer-meta p { margin:0; }
+.ms-social-links .ms-email-link { width:44px; height:44px; min-height:44px; padding:0; border-radius:50%; flex-shrink:0; }
+.ms-email-link svg { width:18px; height:18px; }

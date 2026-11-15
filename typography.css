@@ -1,0 +1,9 @@
+/* Owner typography: Geist Sans for display; Inter for reading and controls. */
+@font-face { font-family:Geist; src:url("assets/fonts/geist-latin-variable.woff2") format("woff2"); font-style:normal; font-weight:100 900; font-display:swap; }
+@font-face { font-family:Inter; src:url("assets/fonts/inter-latin-variable.woff2") format("woff2"); font-style:normal; font-weight:100 900; font-display:swap; }
+html,body { --font-bricolage:"Geist",sans-serif; --font-instrument:"Inter",sans-serif; --brand-display:"Geist",sans-serif; --brand-body:"Inter",sans-serif; font-family:var(--brand-body); }
+body { -webkit-font-smoothing:antialiased; font-optical-sizing:auto; }
+button,input,textarea,select,summary,.font-instrument,.font-sans { font-family:var(--brand-body); }
+h1,h2,h3,.font-bricolage,.ms-brand,.ms-monogram,.ms-footer-name,.ms-company-name,.ms-greeting,.ms-experience-card h3 { font-family:var(--brand-display); }
+.ms-hero h1 { font-weight:700; letter-spacing:-.055em; }
+.ms-project-card h3 { letter-spacing:-.035em; }

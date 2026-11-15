@@ -1,0 +1,72 @@
+/* Education and credentials, within the existing white / charcoal / pastel system. */
+.ms-credentials-layout { margin-top:52px; }
+.ms-foundation { display:flex; align-items:center; gap:28px; padding:32px 36px; border:1px solid var(--reference-rule); border-radius:28px; background:var(--reference-panel); text-align:left; }
+.ms-foundation-mark { position:relative; flex:0 0 88px; height:88px; border-radius:24px; display:grid; place-items:center; background:var(--reference-ink); color:white; box-shadow:0 7px 0 #E1E2E4,0 14px 24px #0D0F1710; transform:rotate(-5deg); transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s; }
+.ms-foundation:hover .ms-foundation-mark { transform:rotate(0) translateY(-3px); box-shadow:0 7px 0 #E1E2E4,0 18px 30px #0D0F1718; }
+.ms-foundation-mark>span { font-family:var(--brand-display); font-size:28px; font-weight:650; letter-spacing:-.04em; }
+.ms-foundation-mark svg { position:absolute; width:23px; height:23px; right:-7px; bottom:-5px; padding:4px; background:var(--reference-green); color:#207052; border:2px solid white; border-radius:50%; }
+.ms-credential-eyebrow { font:500 11px/1.4 var(--brand-body); letter-spacing:.1em; text-transform:uppercase; color:var(--reference-muted); margin:0 0 8px; }
+.ms-foundation-copy { min-width:0; }
+.ms-foundation-copy h3 { margin:0 0 10px; font-size:clamp(22px,2.3vw,30px); letter-spacing:-.035em; font-weight:600; line-height:1.2; color:var(--reference-ink); }
+.ms-foundation-copy>p:last-child { color:var(--reference-muted); font-size:14px; line-height:1.7; }
+.ms-foundation-place { margin-left:16px; }
+.ms-foundation-dates { margin-left:auto; flex-shrink:0; padding:10px 14px; border-radius:999px; background:white; border:1px solid var(--reference-rule); font-size:12px; line-height:1.4; color:var(--reference-muted); }
+.ms-credential-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; margin-top:24px; }
+.ms-credential { min-width:0; border:1px solid var(--reference-rule); border-radius:28px; padding:24px; background:var(--reference-white); text-align:left; transition:border-color .3s,box-shadow .3s; }
+.ms-credential:hover,.ms-credential:focus-within { border-color:#C7CBD3; box-shadow:0 16px 40px #0D0F1709; }
+.ms-credential-top { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+.ms-credential-badge { padding:8px 13px; border-radius:999px; font:600 12px/1 var(--brand-body); }
+.ms-credential-badge-pmp { background:var(--reference-purple); color:#57428A; }
+.ms-credential-badge-csm { background:var(--reference-blue); color:#335A7B; }
+.ms-credential-category { font-size:12px; color:var(--reference-muted); }
+.ms-credential-preview { display:flex; position:relative; align-items:center; justify-content:center; height:230px; border:1px solid #EEEEF0; border-radius:16px; background:var(--reference-panel); padding:16px; overflow:hidden; }
+.ms-credential-preview img { display:block; width:100%; height:100%; object-fit:contain; transform-origin:center; transition:transform .6s cubic-bezier(.2,.8,.2,1),filter .6s; }
+.ms-credential:hover .ms-credential-preview img,.ms-credential:focus-within .ms-credential-preview img { transform:translateY(-3px) rotate(-.7deg) scale(1.02); filter:drop-shadow(0 8px 8px #0D0F171A); }
+.ms-credential-preview-action { position:absolute; right:12px; bottom:12px; width:34px; height:34px; border-radius:50%; display:grid; place-items:center; color:white; background:var(--reference-ink); opacity:0; transform:translateY(5px); transition:opacity .25s,transform .25s; }
+.ms-credential-preview-action svg { width:16px; height:16px; }
+.ms-credential:hover .ms-credential-preview-action,.ms-credential:focus-within .ms-credential-preview-action { opacity:1; transform:translateY(0); }
+.ms-credential-copy { padding-top:24px; }
+.ms-credential-copy h3 { font-size:22px; font-weight:600; letter-spacing:-.03em; line-height:1.3; color:var(--reference-ink); margin:0 0 8px; }
+.ms-credential-copy>p { color:var(--reference-muted); font-size:14px; line-height:1.5; }
+.ms-credential-link { display:inline-flex; align-items:center; gap:9px; font-size:13px; font-weight:500; color:var(--reference-ink); margin-top:24px; min-height:32px; }
+.ms-credential-link svg { width:15px; height:15px; transition:transform .25s; }
+.ms-credential-link:hover svg { transform:translate(3px,-3px); }
+.ms-learning { margin-top:40px; border-top:1px solid var(--reference-rule); padding-top:32px; text-align:left; }
+.ms-learning-heading { display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:24px; }
+.ms-learning-heading h3 { font-size:22px; font-weight:550; letter-spacing:-.03em; line-height:1.3; }
+.ms-learning-heading>p { font-size:13px; color:var(--reference-muted); }
+.ms-learning ul { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.ms-learning li { display:flex; align-items:center; gap:14px; padding:20px; border-radius:16px; background:var(--reference-panel); }
+.ms-learning-number { align-self:flex-start; padding-top:3px; color:#91959D; font-size:11px; font-variant-numeric:tabular-nums; }
+.ms-learning li>div { min-width:0; }
+.ms-learning h4 { font-family:var(--brand-display); font-size:14px; font-weight:550; line-height:1.5; margin-bottom:5px; }
+.ms-learning li p { font-size:12px; color:var(--reference-muted); line-height:1.5; }
+.ms-learning li>svg { margin-left:auto; width:16px; height:16px; flex-shrink:0; color:#7D9185; }
+.ms-academic-motion [data-credential-reveal] { transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1); transition-delay:var(--credential-delay,0ms); }
+.ms-academic-motion [data-credential-reveal]:not(.is-visible) { opacity:0; transform:translateY(22px); }
+#certifications { scroll-margin-top:110px; }
+@media(max-width:1000px) { .ms-foundation { flex-wrap:wrap; gap:24px; } .ms-foundation-dates { margin-left:112px; margin-top:-12px; } .ms-foundation-place { display:block; margin-left:0; } .ms-credential-preview { height:210px; } .ms-learning-heading { display:block; } .ms-learning-heading>p { margin-top:8px; } }
+@media(max-width:767px) {
+ .ms-credentials-layout { margin-top:32px; }
+ .ms-foundation { padding:24px; gap:24px; border-radius:24px; align-items:flex-start; }
+ .ms-foundation-mark { flex-basis:64px; height:64px; border-radius:18px; }
+ .ms-foundation-mark>span { font-size:22px; }
+ .ms-foundation-copy { flex:1 0 100%; }
+ .ms-foundation-copy h3 { font-size:25px; }
+ .ms-foundation-dates { margin:0; }
+ .ms-credential-grid { grid-template-columns:minmax(0,1fr); gap:16px; margin-top:16px; }
+ .ms-credential { padding:20px; border-radius:24px; }
+ .ms-credential-preview { height:190px; padding:12px; }
+ .ms-credential-copy { padding-top:20px; }
+ .ms-credential-copy h3 { font-size:21px; }
+ .ms-learning { margin-top:32px; padding-top:28px; }
+ .ms-learning-heading h3 { font-size:21px; }
+ .ms-learning ul { grid-template-columns:minmax(0,1fr); }
+ .ms-learning li { padding:18px; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .ms-academic-motion [data-credential-reveal],.ms-foundation-mark,.ms-credential,.ms-credential-preview img,.ms-credential-preview-action,.ms-credential-link svg { transition:none; }
+ .ms-academic-motion [data-credential-reveal]:not(.is-visible) { opacity:1; transform:none; }
+ .ms-foundation-mark,.ms-foundation:hover .ms-foundation-mark,.ms-credential:hover .ms-credential-preview img,.ms-credential:focus-within .ms-credential-preview img { transform:none; }
+}
+

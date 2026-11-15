@@ -1,0 +1,60 @@
+/* Dark page / section / card hierarchy: separate surfaces rather than flattening them. */
+:root {
+ color-scheme:dark;
+ --page-bg:#212226; --section-bg:#27282C;
+ --page-text:#F2F2F3; --page-muted:#A9ABAF;
+ --surface-dark:#111214; --surface-dark-line:#2C2D30;
+ --on-surface:#F4F4F5; --on-surface-muted:#A9ABAF;
+ --reference-text:var(--page-text); --reference-muted:var(--page-muted);
+ --reference-panel:var(--section-bg); --reference-rule:#2C2D30;
+ --neutral-3:var(--section-bg); --neutral-10:#2C2D30; --neutral-65:var(--page-muted);
+ --ms-panel:var(--surface-dark); --ms-text-muted:var(--page-muted); --ms-rule:#2C2D30;
+ --action-ink:#66E6B0; --action-wash:#222326; --focus-ring:#14F590;
+ --reference-header-float:rgba(33,34,38,.96); --reference-header-shadow:rgba(0,0,0,.25);
+}
+html,body,.ms-page-shell { background:var(--page-bg); color:var(--page-text); }
+body { scrollbar-color:#3A3B3F var(--page-bg); }
+.ms-header,.ms-header.is-scrolled { background:var(--reference-header-float); border-bottom:1px solid #2C2D30; }
+#top,#academic,#recent-work,#services,#blog { background:var(--page-bg); }
+#experiences,#capabilities,#philosophy,#beyond-work,main>section.ms-tape-section { background:var(--section-bg); }
+.ms-brand,.ms-brand-period,.ms-hero h1 { color:var(--page-text); }
+.ms-header .ms-navigator { outline:1px solid #3A3B3F; }
+.ms-greeting,.ms-hero-description,.ms-hero-meta,.ms-experience-summary,.ms-tools-title>p { color:var(--page-muted); }
+:is(#experiences,#academic,#capabilities,#recent-work,#philosophy,#services,#beyond-work,#blog) h2 { color:var(--page-text); }
+:is(#experiences,#academic,#capabilities,#recent-work,#philosophy,#services,#beyond-work,#blog) h2+p { color:var(--page-muted); }
+.ms-learning-heading h3 { color:var(--page-text); }
+.ms-learning-heading>p { color:var(--page-muted); }
+.ms-reference-loader { background:var(--page-bg); color:var(--page-text); }
+:is(.ms-experience-card,.ms-foundation,.ms-credential,.ms-project-card,.ms-service-card,.ms-personal-note,.ms-personal-photo,.ms-note-card,.ms-footer-panel) {
+ background:var(--surface-dark); border:1px solid var(--surface-dark-line); box-shadow:0 12px 30px #00000024;
+}
+.has-js .ms-experience-card .ms-card-face { background:var(--surface-dark); border:0; }
+:is(.ms-credential,.ms-project-card,.ms-service-card):hover,
+:is(.ms-credential,.ms-project-card,.ms-service-card):focus-within { border-color:#678B77; }
+.ms-desktop-nav,.ms-resources>div,.ms-mobile-menu nav,.ms-search-dialog { background:var(--surface-dark); border-color:var(--surface-dark-line); box-shadow:0 8px 24px #00000024; }
+.ms-header .ms-search-button { border:1px solid var(--surface-dark-line); }
+.ms-search-dialog::backdrop { background:rgba(0,0,0,.72); }
+.ms-tool-cluster p,.ms-tool-cluster .ms-tool-badge,.ms-skill,.ms-learning li { border-color:var(--surface-dark-line); }
+.ms-credential-record { --record-line:#3A3B3F; }
+.ms-record-proof,.ms-credential-preview { background:#0A0A0B; border-color:#2C2D30; }
+.ms-record-document { color:var(--on-surface); }
+.ms-record-issuer,.ms-record-provider { color:var(--on-surface-muted); }
+.ms-foundation-dates,.ms-profile-facts span,.ms-tag { border-color:#3A3B3F; }
+.ms-eye { background:#EDF6EF; border-color:#87A393; }
+.ms-pupil { background:#0A0A0B; }
+.ms-pupil>span { background:#FFFFFF; }
+.ms-eye-sleep { color:var(--page-muted); }
+.ms-rail-controls .ms-icon-button { background:var(--surface-dark); border-color:var(--surface-dark-line); }
+.ms-footer-panel { background:var(--surface-dark); }
+.ms-footer-content>p,.ms-footer-meta { color:var(--on-surface-muted); }
+.ms-footer-name { color:var(--on-surface); }
+.ms-footer-name img { outline-color:#678B77; }
+.ms-motion-toggle,.ms-project-pause,.ms-outline-button { border-color:#3A3B3F; }
+:where(a,button,summary,input,textarea,select,[tabindex]):focus-visible { outline-color:var(--navigator-mint); }
+.ms-skip-link { outline:1px solid #678B77; }
+
+
+.ms-footer { background:var(--page-bg); }
+
+/* Preserve the exact original card fill, including inset certificate frames. */
+.ms-footer-name img { background:#0A0A0B; }

@@ -1,0 +1,229 @@
+/* Three temporary photographic hero directions using the same content and image. */
+#top.ms-hero { position:relative; display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); align-items:center; gap:32px 48px; min-height:820px; padding:130px 32px 56px; overflow:clip; }
+#top .ms-reference-eyes { display:block; }
+.ms-hero-preview { position:relative; z-index:3; grid-column:1/-1; display:flex; justify-content:center; align-items:center; gap:8px; flex-wrap:wrap; }
+.ms-hero-preview>span { color:var(--page-muted); font-size:12px; margin-inline:6px; }
+.ms-hero-preview button { padding:9px 15px; min-height:38px; font-size:12px; cursor:pointer; }
+.ms-hero-preview button[aria-pressed="true"] { font-weight:700; text-decoration:underline; text-underline-offset:4px; }
+#top .ms-hero-main { position:relative; z-index:2; min-width:0; align-items:flex-start; text-align:left; max-width:none; }
+#top h1 { font-size:clamp(48px,5.8vw,80px); margin-bottom:24px; }
+#top .ms-intro-word { display:block; font-size:26px; line-height:1.3; margin-bottom:10px; }
+#top .ms-name-surprise { text-align:inherit; }
+#top .ms-name-first,#top .ms-name-last { display:block; }
+#top .ms-intro-summary { padding:0; margin:0 0 26px; max-width:47ch; font-size:16px; }
+#top .ms-hero-description { max-width:45ch; font-size:16px; margin-block:20px 24px; }
+#top .ms-hero-meta { justify-content:flex-start; }
+#top .ms-roles { justify-content:flex-start; }
+.ms-hero-photo { margin:0; position:relative; height:610px; min-width:0; border-radius:40px; overflow:clip; box-shadow:var(--tile-shadow); }
+.ms-hero-photo img { display:block; width:100%; height:100%; object-fit:cover; object-position:50% 48%; }
+/* 2: immersive photograph, with the subject to the right and theme-aware text protection. */
+[data-hero="2"] #top { grid-template-columns:minmax(0,1fr); min-height:850px; isolation:isolate; }
+[data-hero="2"] #top .ms-hero-main { width:49%; }
+[data-hero="2"] #top .ms-hero-photo { position:absolute; z-index:-2; inset:0 0 0 26%; height:auto; border-radius:0; box-shadow:none; }
+[data-hero="2"] #top::after { content:""; position:absolute; z-index:-1; inset:0; background:linear-gradient(90deg,#212226 0%,#212226FA 33%,#212226BD 47%,#21222610 76%),linear-gradient(0deg,#212226 0%,transparent 30%); pointer-events:none; }
+[data-theme="light"][data-hero="2"] #top::after { background:linear-gradient(90deg,#F7FAF8 0%,#F7FAF8FA 33%,#F7FAF8BD 47%,#F7FAF810 76%),linear-gradient(0deg,#F7FAF8 0%,transparent 30%); }
+
+/* At the top of the page, let the hero panorama continue behind the fixed navigation. */
+:root[data-hero="2"] .ms-header:not(.is-scrolled) {
+ background:transparent;
+ border-bottom-color:transparent;
+ box-shadow:none;
+ backdrop-filter:none;
+}
+/* 3: centred introduction above a wide photograph. */
+[data-hero="3"] #top { grid-template-columns:minmax(0,1fr); gap:32px; min-height:0; }
+[data-hero="3"] #top .ms-hero-main { align-items:center; text-align:center; }
+[data-hero="3"] #top .ms-name-first,[data-hero="3"] #top .ms-name-last { display:inline; }
+[data-hero="3"] #top h1 { font-size:clamp(44px,7vw,96px); }
+[data-hero="3"] #top .ms-intro-summary { max-width:65ch; }
+[data-hero="3"] #top :is(.ms-roles,.ms-hero-meta) { justify-content:center; }
+[data-hero="3"] #top .ms-hero-photo { height:380px; width:100%; }
+[data-hero="3"] #top .ms-hero-photo img { object-position:50% 45%; }
+@media(min-width:1600px) { #top.ms-hero { padding-inline:max(48px,calc((100vw - 1440px)/2)); } }
+@media(max-width:1000px) and (min-width:768px) { #top.ms-hero { gap:30px; padding-inline:24px; } #top h1 { font-size:52px; } #top .ms-role-label { font-size:13px; } #top .ms-role.is-selected { padding-inline:12px; } }
+@media(max-width:767px) {
+ #top.ms-hero { display:flex; flex-direction:column; align-items:stretch; padding:104px 20px 36px; min-height:0; gap:30px; }
+ .ms-hero-preview { gap:6px; }
+ .ms-hero-preview>span:first-child { width:100%; text-align:center; }
+ .ms-hero-preview button { padding:9px 12px; font-size:11px; }
+ .ms-hero-preview-status { width:100%; text-align:center; }
+ #top .ms-hero-main { align-items:center; text-align:center; }
+ #top h1 { font-size:clamp(42px,10vw,64px); }
+ #top .ms-name-first,#top .ms-name-last { display:inline; }
+ #top .ms-intro-summary { font-size:15px; }
+ #top :is(.ms-roles,.ms-hero-meta) { justify-content:center; }
+ #top .ms-role-label { font-size:13px; }
+ #top .ms-hero-photo { width:100%; height:400px; border-radius:32px; }
+ [data-hero="2"] #top .ms-hero-main { width:100%; }
+ [data-hero="2"] #top .ms-hero-photo { inset:0; position:absolute; height:auto; border-radius:0; }
+ [data-hero="2"] #top::after { inset:0; background:linear-gradient(180deg,#212226EF 0%,#212226EB 45%,#212226A6 75%,#212226 100%); }
+ [data-theme="light"][data-hero="2"] #top::after { background:linear-gradient(180deg,#F7FAF8F2 0%,#F7FAF8EB 45%,#F7FAF8A6 75%,#F7FAF8 100%); }
+ [data-hero="2"] #top { min-height:870px; padding-bottom:100px; }
+ [data-hero="3"] #top .ms-hero-photo { height:320px; }
+ [data-hero="3"] #top h1 { font-size:clamp(42px,10vw,64px); }
+}
+
+/* The owner retained option 2 and requested panorama as a second background choice. */
+[data-hero="3"] #top { min-height:850px; isolation:isolate; }
+[data-hero="3"] #top .ms-hero-main { max-width:1160px; margin-inline:auto; }
+[data-hero="3"] #top .ms-hero-photo { position:absolute; z-index:-2; inset:90px 0 0; height:auto; width:100%; border-radius:0; box-shadow:none; }
+[data-hero="3"] #top .ms-hero-photo img { object-position:50% 45%; }
+[data-hero="3"] #top::after { content:""; position:absolute; z-index:-1; inset:90px 0 0; pointer-events:none; background:linear-gradient(180deg,#212226AD 0%,#212226B8 50%,#212226F2 100%); }
+[data-theme="light"][data-hero="3"] #top::after { background:linear-gradient(180deg,#F7FAF8B8 0%,#F7FAF8C2 50%,#F7FAF8F2 100%); }
+@media(max-width:767px) {
+ [data-hero="3"] #top { min-height:870px; padding-bottom:100px; }
+ [data-hero="3"] #top .ms-hero-photo { inset:0; height:auto; border-radius:0; }
+ [data-hero="3"] #top::after { inset:0; background:linear-gradient(180deg,#212226E3 0%,#212226D9 45%,#212226B3 75%,#212226F2 100%); }
+ [data-theme="light"][data-hero="3"] #top::after { background:linear-gradient(180deg,#F7FAF8E6 0%,#F7FAF8D9 45%,#F7FAF8B3 75%,#F7FAF8F2 100%); }
+}
+
+/* Selected panorama: restore the original pointer-following and blinking eyes. */
+#top .ms-reference-eyes { position:relative; z-index:2; grid-column:1/-1; width:100%; height:110px; align-self:end; margin-top:8px; }
+@media(max-width:767px) { #top .ms-reference-eyes { height:80px; margin-top:auto; } [data-hero="3"] #top { padding-bottom:0; } }
+@media(max-width:359px) { #top .ms-reference-eyes { height:66px; } }
+[data-hero="3"] #top { padding-bottom:0; }
+/* Background comparison retains the same bottom-aligned animated eyes. */
+[data-hero="2"] #top { padding-bottom:0; }
+
+/* Keep the complete hero name together on one line. */
+[data-hero="2"] #top h1 { font-size:clamp(32px,4vw,58px); }
+[data-hero="2"] #top .ms-name-first,[data-hero="2"] #top .ms-name-last { display:inline; }
+[data-hero="2"] #top .ms-owner-name { white-space:nowrap; }
+@media(max-width:767px) { [data-hero="2"] #top h1 { font-size:clamp(22px,6.2vw,42px); } }
+
+/* Centre the hero content beneath the full name within the text column. */
+[data-hero="2"] #top .ms-hero-main { align-items:center; text-align:center; }
+[data-hero="2"] #top .ms-name-surprise { text-align:center; }
+[data-hero="2"] #top :is(.ms-roles,.ms-hero-meta) { justify-content:center; }
+[data-hero="2"] #top .ms-intro-summary { margin-inline:auto; }
+
+/* Keep the eyes close to the content instead of stretching the hero vertically. */
+[data-hero="2"] #top { min-height:0; align-content:start; grid-template-rows:auto 110px; row-gap:28px; }
+[data-hero="2"] #top .ms-reference-eyes { margin-top:0; }
+@media(max-width:767px) {
+ [data-hero="2"] #top { min-height:0; gap:24px; }
+ [data-hero="2"] #top .ms-reference-eyes { margin-top:8px; }
+}
+
+/* Panorama: run the photo up behind the fixed header so no white band shows above it. */
+[data-hero="3"] #top .ms-hero-photo,
+[data-hero="3"] #top::after { inset:0; }
+:root[data-hero="3"] .ms-header:not(.is-scrolled) {
+ background:transparent;
+ border-bottom-color:transparent;
+ box-shadow:none;
+ backdrop-filter:none;
+}
+
+/* Keep the header bar transparent while scrolling too: only the pill and buttons float. */
+:root[data-hero] .ms-header,
+:root[data-hero] .ms-header.is-scrolled {
+ background:transparent;
+ border-bottom-color:transparent;
+ box-shadow:none;
+ backdrop-filter:none;
+ -webkit-backdrop-filter:none;
+}
+
+/* Dissolve the bottom of the hero into the next section instead of a hard edge. */
+#top.ms-hero::before {
+ content:""; position:absolute; z-index:6; left:0; right:0; bottom:-1px; height:170px; pointer-events:none;
+ background:linear-gradient(to bottom,
+  color-mix(in srgb,var(--page-bg) 0%,transparent) 0%,
+  color-mix(in srgb,var(--page-bg) 30%,transparent) 35%,
+  color-mix(in srgb,var(--page-bg) 70%,transparent) 65%,
+  color-mix(in srgb,var(--page-bg) 92%,transparent) 88%,
+  var(--page-bg) 100%);
+}
+@media(max-width:767px) { #top.ms-hero::before { height:120px; } }
+
+/* Section rhythm: tighter spacing, and tinted sections melt into their neighbours. */
+html body main>section:not(.ms-hero) { padding-block:72px; }
+html body main>section.ms-tape-section { padding-block:56px 64px; }
+@media(max-width:1000px) { html body main>section:not(.ms-hero) { padding-block:60px; } }
+@media(max-width:767px) { html body main>section:not(.ms-hero) { padding-block:48px; } html body main>section.ms-tape-section { padding-block:40px 48px; } }
+:root[data-theme] main>section:is(#experiences,#capabilities,#academic,#services,#delivery-tapes) {
+ background-image:linear-gradient(to bottom,var(--page-bg) 0,transparent 110px,transparent calc(100% - 110px),var(--page-bg) 100%);
+}
+@media(max-width:767px) {
+ :root[data-theme] main>section:is(#experiences,#capabilities,#academic,#services,#delivery-tapes) {
+  background-image:linear-gradient(to bottom,var(--page-bg) 0,transparent 70px,transparent calc(100% - 70px),var(--page-bg) 100%);
+ }
+}
+
+/* Compact rhythm: much closer sections and headings closer to their content. */
+html body main>section:not(.ms-hero) { padding-block:40px; }
+html body main>section.ms-tape-section { padding-block:32px 40px; }
+html body main>section .ms-section-title { margin-bottom:24px; padding-block:8px 10px; }
+html body #capabilities .ms-skill-playbook,html body #capabilities .ms-skill-grid { margin-top:28px; }
+html body .ms-credentials-layout { margin-top:28px; }
+html body .ms-footer { padding-bottom:56px; }
+@media(max-width:1000px) { html body main>section:not(.ms-hero) { padding-block:36px; } }
+@media(max-width:767px) {
+ html body main>section:not(.ms-hero) { padding-block:28px; }
+ html body main>section.ms-tape-section { padding-block:24px 32px; }
+ html body main>section .ms-section-title { margin-bottom:18px; }
+}
+:root[data-theme] main>section:is(#experiences,#capabilities,#academic,#services,#delivery-tapes) {
+ background-image:linear-gradient(to bottom,var(--page-bg) 0,transparent 70px,transparent calc(100% - 70px),var(--page-bg) 100%);
+}
+@media(max-width:767px) {
+ :root[data-theme] main>section:is(#experiences,#capabilities,#academic,#services,#delivery-tapes) {
+  background-image:linear-gradient(to bottom,var(--page-bg) 0,transparent 44px,transparent calc(100% - 44px),var(--page-bg) 100%);
+ }
+}
+#top.ms-hero::before { height:110px; }
+
+/* Tool ribbon as a crime-scene style tape: full-bleed, square-ended, tilted, with printed edge lines. */
+.ms-scene-tapes { height:176px; overflow:clip; }
+.ms-scene-tape {
+ left:-6%; right:-6%; top:50px; height:74px; border-radius:0;
+ transform:rotate(-2.4deg); transform-origin:center;
+ box-shadow:0 10px 22px #00000040;
+ background:
+  linear-gradient(#0A0A0B,#0A0A0B) left 0 top 7px/100% 2px no-repeat,
+  linear-gradient(#0A0A0B,#0A0A0B) left 0 bottom 7px/100% 2px no-repeat,
+  #14F590;
+}
+.ms-tape-group>span { font-weight:800; letter-spacing:.02em; text-transform:uppercase; font-size:21px; }
+.ms-tape-divider { width:9px; height:9px; flex-basis:9px; border-radius:0; transform:rotate(45deg); opacity:1; }
+.ms-scene-tapes .ms-motion-toggle { bottom:6px; }
+@media(max-width:767px) {
+ .ms-scene-tapes { height:132px; }
+ .ms-scene-tape { left:-10%; right:-10%; top:36px; height:58px; transform:rotate(-3deg); background:
+  linear-gradient(#0A0A0B,#0A0A0B) left 0 top 6px/100% 2px no-repeat,
+  linear-gradient(#0A0A0B,#0A0A0B) left 0 bottom 6px/100% 2px no-repeat,
+  #14F590; }
+ .ms-tape-group>span { font-size:16px; }
+}
+@media(prefers-reduced-motion:reduce) { .ms-scene-tapes { height:130px; } }
+
+/* Crime-scene tape look: yellow tape, slanted black bars along both edges, black capitals between. */
+:root[data-theme] .ms-scene-tape.ms-tape-front {
+ height:78px; padding-block:0;
+ background:
+  repeating-linear-gradient(115deg,#0A0A0B 0 13px,transparent 13px 26px) left 0 top 0/100% 15px no-repeat,
+  repeating-linear-gradient(115deg,#0A0A0B 0 13px,transparent 13px 26px) left 0 bottom 0/100% 15px no-repeat,
+  #14F590;
+ box-shadow:0 10px 20px #00000045;
+}
+.ms-tape-group>span { font-size:22px; font-weight:800; letter-spacing:.03em; text-transform:uppercase; }
+.ms-tape-divider { width:7px; height:7px; flex-basis:7px; border-radius:50%; transform:none; opacity:1; }
+@media(max-width:767px) {
+ :root[data-theme] .ms-scene-tape.ms-tape-front {
+  height:62px;
+  background:
+   repeating-linear-gradient(115deg,#0A0A0B 0 10px,transparent 10px 20px) left 0 top 0/100% 11px no-repeat,
+   repeating-linear-gradient(115deg,#0A0A0B 0 10px,transparent 10px 20px) left 0 bottom 0/100% 11px no-repeat,
+   #14F590;
+ }
+ .ms-tape-group>span { font-size:16px; }
+}
+
+/* The tape runs on its own: no pause button underneath it. */
+.ms-scene-tapes .ms-motion-toggle { display:none !important; }
+.ms-scene-tapes { height:150px; }
+@media(max-width:767px) { .ms-scene-tapes { height:112px; } }
+
+/* With Beyond the Work gone, Delivery Insights sits on the plain page colour so the tint still alternates. */
+:root[data-theme] main>section#blog { background-color:var(--page-bg); background-image:none; }

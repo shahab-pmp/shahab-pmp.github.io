@@ -1,0 +1,22 @@
+/* A single, calm brand ribbon replaces the overlapping caution strips. */
+main>section.ms-tape-section { padding-block:28px 12px; overflow:hidden; background:var(--reference-panel); }
+.ms-scene-tapes { position:relative; height:172px; overflow:clip; border:0; padding:0; }
+.ms-scene-tape { position:absolute; left:32px; right:32px; top:8px; width:auto; height:80px; display:flex; align-items:center; overflow:hidden; border:0; border-radius:999px; color:#0A0A0B; background:#14F590; box-shadow:0 8px 20px #0A0A0B14; }
+.ms-tape-track { display:flex; width:max-content; flex-shrink:0; animation:ms-tape-travel 60s linear infinite; animation-play-state:paused; will-change:transform; }
+.ms-tape-group { display:flex; align-items:center; gap:36px; flex-shrink:0; padding-inline:18px; }
+.ms-tape-group>span { display:block; white-space:nowrap; font-family:var(--brand-display); font-size:23px; font-weight:600; letter-spacing:-.015em; line-height:1; color:inherit; }
+.ms-tape-divider { display:block; flex:0 0 5px; width:5px; height:5px; background:currentColor; border-radius:50%; opacity:.6; }
+.ms-scene-tapes.is-playing:not(.is-paused) .ms-tape-track { animation-play-state:running; }
+.ms-scene-tapes.is-paused .ms-tape-track { animation-play-state:paused; }
+@media(hover:hover) { .ms-scene-tapes.is-playing:hover .ms-tape-track { animation-play-state:paused; } }
+.ms-scene-tapes .ms-motion-toggle { top:auto; bottom:12px; right:32px; z-index:3; transform:none; min-height:44px; }
+@keyframes ms-tape-travel { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+@media(max-width:767px) {
+ main>section.ms-tape-section { padding-block:20px 8px; }
+ .ms-scene-tapes { height:152px; }
+ .ms-scene-tape { left:16px; right:16px; height:64px; }
+ .ms-tape-group { gap:24px; padding-inline:12px; }
+ .ms-tape-group>span { font-size:19px; }
+ .ms-scene-tapes .ms-motion-toggle { right:16px; bottom:12px; }
+}
+@media(prefers-reduced-motion:reduce) { .ms-tape-track { animation:none !important; will-change:auto; } .ms-scene-tapes { height:104px; } }
