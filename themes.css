@@ -13,7 +13,7 @@
 :root[data-theme="light"] .ms-header { border-bottom-color:#DEE8E3; }
 :root[data-theme="light"] :where(a,button,summary,input,textarea,select,[tabindex]):focus-visible { outline-color:var(--focus-ring); }
 :root[data-theme="light"] :is(.ms-experience-card,.ms-foundation,.ms-credential,.ms-project-card,.ms-service-card,.ms-personal-note,.ms-note-card,.ms-skill,.ms-desktop-nav,.ms-resources,.ms-mobile-menu nav,.ms-search-dialog,.ms-footer-panel) :is(a,button,summary,input,[tabindex]):focus-visible { outline-color:var(--navigator-mint); }
-.ms-theme-toggle { width:44px; height:44px; min-height:44px; border:1px solid #3A3B3F; background:#0A0A0B; color:#F4F4F5; }
+.ms-theme-toggle { width:44px; height:44px; min-height:44px; border:1px solid #3A3B3F; background:#1E1E1E; color:#F4F4F5; }
 .ms-theme-toggle:hover { background:#26272A; color:var(--navigator-mint); }
 .ms-theme-toggle:focus-visible { outline:2px solid var(--focus-ring); outline-offset:4px; }
 .ms-theme-toggle svg { width:20px; height:20px; transition:transform .2s ease-out; }

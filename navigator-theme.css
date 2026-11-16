@@ -13,7 +13,7 @@ html,body { color:var(--reference-text); }
 .ms-desktop-nav>a:hover,.ms-desktop-nav>a[aria-current],.ms-resources[open]>summary { background:var(--reference-green); color:var(--action-ink); }
 .ms-mobile-menu nav a:hover,.ms-mobile-menu nav a:focus-visible,.ms-resources a:hover { background:var(--action-wash); }
 .ms-brand { gap:10px; }
-.ms-header .ms-navigator { display:block; width:40px; height:40px; flex-shrink:0; background:#0A0A0B; border-radius:50%; }
+.ms-header .ms-navigator { display:block; width:40px; height:40px; flex-shrink:0; background:#1E1E1E; border-radius:50%; }
 .ms-navigator-needle { transform-origin:12px 12px; transform:rotate(calc(var(--navigator-turn,0deg) + var(--navigator-hover,0deg))); transition:transform .55s cubic-bezier(.22,1.4,.4,1); }
 .ms-brand:hover .ms-navigator-needle,.ms-brand:focus-visible .ms-navigator-needle { --navigator-hover:24deg; }
 .ms-button,[data-palette-primary],.ms-footer [data-palette-primary] { background:var(--navigator-mint) !important; color:var(--reference-ink) !important; border-color:var(--navigator-mint) !important; }

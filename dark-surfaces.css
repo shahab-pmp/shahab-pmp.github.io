@@ -1,5 +1,5 @@
 /* Shared deep green-charcoal surfaces, requested to match the contact panel. */
-:root { --surface-dark:#111214; --surface-dark-line:#2C2D30; --on-surface:#F4F4F5; --on-surface-muted:#A9ABAF; }
+:root { --surface-dark:#1E1E1E; --surface-dark-line:#2C2D30; --on-surface:#F4F4F5; --on-surface-muted:#A9ABAF; }
 :is(.ms-experience-card,.ms-card-face,.ms-foundation,.ms-credential,.ms-learning li,.ms-project-card,.ms-service-card,.ms-personal-note,.ms-personal-photo,.ms-note-card,.ms-skill,.ms-desktop-nav,.ms-resources>div,.ms-mobile-menu nav,.ms-search-dialog),
 .ms-tool-cluster .ms-tool-badge {
  background:var(--surface-dark);
@@ -63,7 +63,7 @@
 .ms-search-results a { color:var(--on-surface); }
 .ms-search-results a:hover,.ms-search-results a:focus-visible { background:#26272A; color:var(--navigator-mint); }
 .ms-process-card { background:var(--surface-dark); }
-.ms-process-overlay { background-image:linear-gradient(to top,#0A0A0B 0%,#0A0A0BED 25%,#0A0A0B80 62%,#0A0A0B00 100%); }
+.ms-process-overlay { background-image:linear-gradient(to top,#1E1E1E 0%,#1E1E1EED 25%,#1E1E1E80 62%,#1E1E1E00 100%); }
 :is(.ms-experience-card,.ms-foundation,.ms-credential,.ms-project-card,.ms-service-card,.ms-personal-note,.ms-note-card,.ms-skill,.ms-desktop-nav,.ms-resources,.ms-mobile-menu,.ms-search-dialog) :is(a,button,summary,input,[tabindex]):focus-visible { outline-color:var(--navigator-mint); }
 .ms-role:focus-visible,.ms-outline-button:focus-visible,.ms-resume:focus-visible,.ms-project-pause:focus-visible,.ms-motion-toggle:focus-visible { outline-color:var(--focus-ring); }
 @media(max-width:767px) { .ms-skill { padding-inline:16px; } .ms-skill-grid { gap:10px; } }
