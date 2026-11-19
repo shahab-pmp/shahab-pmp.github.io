@@ -382,3 +382,44 @@ main>:is(#experiences,#capabilities,#academic,#services,#blog) { --section-headi
 .ms-scene-card .ms-service-icon,.ms-scene-card .ms-service-icon.ms-gooey-action { position:relative !important; overflow:visible; isolation:isolate; }
 .ms-scene-card .ms-service-icon::before,.ms-scene-card .ms-service-icon::after { inset:0; border-radius:50%; }
 .ms-scene-card .ms-service-icon::after { inset:auto; width:12px; height:12px; left:62%; bottom:0; }
+
+/* Text cards for Ways to Work Together and Delivery Insights. */
+.ms-info-card {
+ display:flex;
+ flex-direction:column;
+ min-width:0;
+ padding:clamp(22px,3vw,40px);
+ border-radius:var(--tile-radius);
+ background:var(--surface-dark);
+}
+.ms-info-card h3 {
+ margin:0 0 12px;
+ color:var(--page-text);
+ font:600 clamp(21px,2.1vw,28px)/1.2 var(--brand-display);
+ text-wrap:balance;
+}
+.ms-info-card p {
+ margin:0;
+ color:var(--page-muted);
+ font:400 16px/1.6 var(--brand-body);
+}
+.ms-info-card-footer {
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ flex-wrap:wrap;
+ gap:8px 16px;
+ margin-top:auto;
+ padding-top:20px;
+ color:var(--page-muted);
+ font:500 14px/1.4 var(--brand-body);
+}
+.ms-info-card-link {
+ display:inline-flex;
+ align-items:center;
+ min-height:44px;
+ color:var(--page-text);
+ text-decoration:underline;
+ text-underline-offset:3px;
+}
+.ms-info-card-link:hover { text-decoration-thickness:2px; }
